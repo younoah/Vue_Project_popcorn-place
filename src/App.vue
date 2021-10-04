@@ -1,10 +1,13 @@
 <template>  
-  <h1>{{ msg }}</h1>
+  <h1>
+    {{ msg }}
+  </h1>
+  <div></div>
   <Hello />
 </template>
 
 <script>
-import Hello from '~/components/Hello';
+import Hello from '~/components/Hello'
 
 export default {
   components: {

@@ -1,4 +1,4 @@
-import * as Vue from 'vue';
-import App from './App.vue';
+import * as Vue from 'vue'
+import App from '~/App'
 
-Vue.createApp(App).mount('#app');
+Vue.createApp(App).mount('#app')
