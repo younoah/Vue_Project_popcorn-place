@@ -1,0 +1,5 @@
+<template>
+  <Router-view />
+</template>
+
+
