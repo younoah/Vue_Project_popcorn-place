@@ -175,7 +175,7 @@ module.exports = {
 
 ```
 
-나중을 위해 알아두기:
+> 나중을 위해 알아두기:
 
 ```js
 module.exports = {
