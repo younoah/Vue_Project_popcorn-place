@@ -1,4 +1,4 @@
-# Boilerplate for Vue + Webpack
+# Boilerplate for Vue@4
 
 ## Usage
 
@@ -10,7 +10,11 @@ npm run build
 
 ## How it was created
 
-### [vue, webpack, webpack-dev-server]
+### 01 [vue, webpack, webpack-dev-server]
+
+> - `vue@4`
+> - `webpack`: 번들러
+> - `webpack-dev-server`: 개발서버
 
 **Install:**
 
@@ -20,7 +24,8 @@ npm i vue@next
 
 ```bash
 npm i -D webpack webpack-cli webpack-dev-server \
-  vue-loader@next @vue/compiler-sfc html-webpack-plugin \
+  vue-loader@next @vue/compiler-sfc \ 
+  html-webpack-plugin \
   css-loader vue-style-loader sass sass-loader \
   copy-webpack-plugin
 ```
@@ -28,6 +33,10 @@ npm i -D webpack webpack-cli webpack-dev-server \
 **Configure:**
 
 `webpack.config.js`:
+
+> - `alias`: 경로 별칭
+> - `extensions`: 확장자 생략 설정
+> - `plugins`: 스태틱 파일 복사
 
 ```js
 const path = require('path');
@@ -78,7 +87,7 @@ module.exports = {
 
 ```
 
-**scripts:**
+`package.json`:
 
 ```json
 {
@@ -89,7 +98,11 @@ module.exports = {
 }
 ```
 
-### [..., vuex, vue-router, babel]
+### 02 [..., vuex, vue-router, babel]
+
+> - `vuex`: 상태 전역 관리를 위한 스토어 
+> - `vue-router`: 프로젝트 내에서 페이지 분리 및 관리를 위한 라우터
+> - `babel`: 최신 JS 문법을 구형 브라우저에서도 동작하게 만드는 트랜스파일러
 
 **Install:**
 
@@ -106,6 +119,8 @@ npm i -D @babel/core @babel/preset-env \
 
 `package.json`:
 
+> `browserslist`: 현재 프로젝트의 브라우저 지원 목록 설정 (babel과 추후 설정할 postcss에서 사용)
+
 ```json
 {
   "browserslist": [
@@ -116,6 +131,10 @@ npm i -D @babel/core @babel/preset-env \
 ```
 
 `webpack.config.js`:
+
+> - `publicPath`: 빌드된 `index.html`에서 절대 경로로 스크립트를 불러오도록 지정 
+> - `devServer`: 개발 서버에서 들어오는 요청을 `index.html`로 돌리도록 `historyApiFallback` 설정
+> - `module`: JS 파일에 대한 babel 로더 추가
 
 ```js
 const path = require('path')
@@ -175,7 +194,7 @@ module.exports = {
 
 ```
 
-> 나중을 위해 알아두기:
+> 나중을 위해 알아두기: 전체 폴더에서 특정 하위 폴더만 제외하는 방법
 
 ```js
 module.exports = {
@@ -185,18 +204,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules\/(?!(axios|xxxx))/, // axios와 xxxx는 제외 하지 않고 나머지 node_modules를 제외한다
         use: 'babel-loader'
-      },
-      {
-        test: /\.vue$/,
-        use: 'vue-loader',
-      },
-      {
-        test: /.s?css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
       }
     ]
   }
@@ -204,6 +211,9 @@ module.exports = {
 ```
 
 `babel.config.json`:
+
+> - `@babel/plugin-transform-runtime`: preset-env가 polyfill을 넣을 때 발생하는 전역 오염 방지
+> - `corejs`: 기본값인 버전 2와 달리 `Array.includes` 같은 더 최신의 JS 문법을 트랜스파일링 할 수 있도록 설정
 
 ```json
 {
@@ -216,7 +226,10 @@ module.exports = {
 }
 ```
 
-### [..., postcss, autoprefixer]
+### 03 [..., postcss, autoprefixer]
+
+> - `postcss`: CSS 후처리 도구
+> - `autoprefixer`: postcss의 플러그인으로서 CSS에 공급업체 접미사(vendor prefix)를 자동으로 붙여준다
 
 **Install:**
 
@@ -238,7 +251,7 @@ module.exports = {
 
 `webpack.config.js`:
 
-> 전처리 도구인 sass-loader 이후에 후처리 도구 postcss-loader를 등록해준다
+> - `module`: 스타일에 대한 로더의 순서에는 로직이 담겨 있다. 먼저 css 전처리 도구인 `sass-loader` 이후에 css 후처리 도구 `postcss-loader`를 등록해준다. 후처리가 끝난 다음에 css를 불러오고 불러온 css를 `vue-style-loader`로 인라인 스타일을 주입한다.
 
 ```js
 const path = require('path')
