@@ -20,7 +20,8 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules\/(?!axios)/,
+        exclude: /node_modules/,
+        // exclude: /node_modules\/(?!(axios))/,
         use: 'babel-loader',
       },
       {
