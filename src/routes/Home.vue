@@ -38,7 +38,7 @@
       </div>
 
       <div v-else>
-        검샌된 자료가 없습니다.
+        검색된 자료가 없습니다.
       </div>
     </div>
   </section>
