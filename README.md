@@ -89,7 +89,7 @@ module.exports = {
 }
 ```
 
-### [..., vuex, vue-router]
+### [..., vuex, vue-router, babel]
 
 **Install:**
 
@@ -213,5 +213,87 @@ module.exports = {
       "corejs": 3
     }]
   ]
+}
+```
+
+### [..., postcss, autoprefixer]
+
+**Install:**
+
+```bash
+npm i -D postcss autoprefixer postcss-loader
+```
+
+**Configure:**
+
+`postcss.config.js`:
+
+```js
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+}
+```
+
+`webpack.config.js`:
+
+> 전처리 도구인 sass-loader 이후에 후처리 도구 postcss-loader를 등록해준다
+
+```js
+const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
+const HtmlPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+
+module.exports = {
+  resolve: {
+    extensions: ['.vue', '.js'],
+    alias: {
+      '~': path.resolve(__dirname, 'src')
+    }
+  },
+  entry: './src/main.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    clean: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.vue$/,
+        use: 'vue-loader',
+      },
+      {
+        test: /.s?css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+    new HtmlPlugin({
+      template: './src/index.html'
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'static' }
+      ]
+    })
+  ],
+  devServer: {
+    historyApiFallback: true
+  }
 }
 ```
