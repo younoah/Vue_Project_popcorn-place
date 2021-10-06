@@ -33,8 +33,7 @@ export default {
   },
   methods:{
     onSubmit(){
-      console.log(this.searchValue)
-      
+      this.$store.dispatch('fetchApi/getMovie',this.searchValue)
     }
   }
 

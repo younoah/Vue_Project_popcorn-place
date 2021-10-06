@@ -3,7 +3,9 @@
 
   <section>
     <div class="container">
-      <div class="row">
+      <div
+        v-if="movieList"
+        class="row">
         <div
           v-for="movie in movieList"
           :key="movie.imdbID"
@@ -34,6 +36,10 @@
           <!-- 카드 영역 끝 -->
         </div>
       </div>
+
+      <div v-else>
+        검샌된 자료가 없습니다.
+      </div>
     </div>
   </section>
 </template>
@@ -53,8 +59,13 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchApi/getMovie')
+    this.$store.dispatch('fetchApi/getMovie', 'frozen')
   },
+  methods: {
+    test(){
+      console.log(this.movieList)
+    }
+  }
 }
 </script>
 
