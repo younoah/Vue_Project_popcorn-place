@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
-import message from './message'
+import fetchApi from './fetchApi'
 
 export default createStore({
-  modules: { message },
+  modules: { fetchApi },
 })
