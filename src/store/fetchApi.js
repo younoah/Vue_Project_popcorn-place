@@ -16,12 +16,11 @@ export default {
   },
   actions: {
     async getMovie({commit}) {
-      const movies = await fetch(
+      const getMovie = await fetch(
         'https://www.omdbapi.com?apikey=7035c60c&s=frozen&page=3'
       ).then((res) => res.json())
 
-      const movieList = movies.Search
-
+      const movieList = getMovie.Search
       commit('assignState', {
         movieList,
       })
