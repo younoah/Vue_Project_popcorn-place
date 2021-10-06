@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.3.0"
   },
   "dependencies": {
-    "vue": "^3.2.19"
+    "vue": "^3.2.19",
+    "vuex": "^4.0.2"
   }
 }
