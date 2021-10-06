@@ -49,6 +49,7 @@
   "dependencies": {
     "bootstrap": "^5.1.2",
     "bootstrap-vue-3": "0.0.4",
+    "dotenv": "^10.0.0",
     "vue": "^3.2.19",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"

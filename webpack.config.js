@@ -2,6 +2,9 @@ const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
+const env = dotenv.config().parsed
 
 module.exports = {
   resolve: {
@@ -53,6 +56,9 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [{ from: 'static' }],
+    }),
+    new webpack.DefinePlugin({
+      VUE_APP_API_KEY: JSON.stringify(env.VUE_APP_API_KEY),
     }),
   ],
   devServer: {
