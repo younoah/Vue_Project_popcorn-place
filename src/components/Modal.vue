@@ -17,13 +17,26 @@
             X
           </button>
           <div>
-            <img :src="movieDetail.Poster" />
-            <div>{{ movieDetail }}</div>
+            <img
+              :src="movieDetail.Poster"
+              class="pb-4" />
+            <div class="detail-body">
+              <h2 class="detail-title pb-4">
+                제목 : {{ movieDetail.Title }}
+              </h2>
+              <div class="detail-text">
+                <p>장르 : {{ movieDetail.Genre }}</p>
+                <p>배우 : {{ movieDetail.Actors }}</p>
+                <p>연도 :{{ movieDetail.Year }}</p>
+                <p>국가 : {{ movieDetail.Country }}</p>
+                <p>줄거리 : {{ movieDetail.Plot }}</p>
+              </div>
+            </div>
           </div>
         </div>
         <div v-else>
           <img
-            style="width : 100%;"
+            style="width: 100%"
             src="https://cdn.roto.codes/images/nyan-cat.gif"
             alt="Loading..." />
         </div>
@@ -33,36 +46,33 @@
 </template>
 
 <script>
-
-export default{
-    props:{
-        id:{
-            type : String,
-            default : null
-        }
-    },
-    data(){
-        return{
-            isShow : false,
-
-        }
-    },
-    computed: {
-        movieDetail() {
-            return this.$store.state.fetchApi.movieDetail
-        },
-    },
-    methods: {
-        onModal(){
-            this.isShow = true
-            this.$store.dispatch('fetchApi/getDetail', this.id)
-        },
-        offModal(){
-            this.isShow = false
-            this.$store.commit('fetchApi/movieDetailState','')
-
-        }
+export default {
+  props:{
+    id:{
+      type : String,
+      default : null
     }
+  },
+  data() {
+    return {
+      isShow: false,
+    }
+  },
+  computed: {
+    movieDetail() {
+      return this.$store.state.fetchApi.movieDetail
+    },
+  },
+  methods: {
+    onModal() {
+      this.isShow = true
+      this.$store.dispatch('fetchApi/getDetail', this.id)
+    },
+    offModal() {
+      this.isShow = false
+      this.$store.commit('fetchApi/movieDetailState', '')
+    },
+  },
 }
 </script>
 
@@ -79,7 +89,6 @@ export default{
   justify-content: center;
   align-items: center;
   &__inner {
-
     background-color: white;
     box-sizing: border-box;
     padding: 20px;
@@ -90,5 +99,4 @@ export default{
     }
   }
 }
-
 </style>
