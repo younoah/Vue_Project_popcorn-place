@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <img
       :src="movie.Poster"
       :alt="movie.Title" />
@@ -13,6 +13,15 @@ export default {
       type: Object,
       default: () => ({})
     }
-  }
+  },
 };
 </script>
+
+<style lang="scss">
+.wrapper {
+  margin: 2.5rem;
+  img {
+    max-width: 250px;
+  }
+}
+</style>

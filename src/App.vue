@@ -11,14 +11,17 @@
 
 <script>
 import Search from '~/components/Search';
-export default {
+export default {  
   components: {
     Search
   }
 };
 </script>
-<style lang="scss">
-  @import "~/scss/main";
+<style lang="scss" scoped>
+.app__inner{
+  height: 100%;
+  width: 100%
+}  
 </style>
 
 

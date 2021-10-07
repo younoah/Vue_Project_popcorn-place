@@ -25,17 +25,11 @@ export default {
   methods: {
     async onSubmit() {
       const searchWord = this.$refs.input.value;
-
+      this.$store.commit('movie/initPage');
       this.$store.dispatch('movie/searchMovies', {
         searchWord,
-        page: 1
+        page: this.$store.state.movie.page
       });
-      /*
-      const res = await fetch(`https://www.omdbapi.com?apikey=7035c60c&s=${searchWord}&page=1`,{
-        method: 'GET',
-      }).then(res=>res.json());
-      console.log(res);
-      */
     }
   }
 };
