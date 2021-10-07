@@ -1,5 +1,28 @@
 <template>
-  <Seacrch @cnt="cnt" />
+  <header>
+    <div class="input-group mb-3 search">
+      <div>
+        <input
+          v-model="searchValue"
+          type="text"
+          class="form-control"
+          placeholder="검색할 영화 제목"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+          @keyup.enter="cnt=1, initMovieList(), onSubmit()" />
+      </div>
+      <div>
+        <!-- 선택 요구사항 로딩 애니메이션 처리 -->
+        <img
+          id="button-addon2"
+          type="button"
+          class="btn btn-outline-secondary"
+          src="../images/search.svg"
+          @click="cnt=1, initMovieList(), onSubmit()" />
+      </div>
+    </div>
+  </header>
+  <!-- <Seacrch @cnt="cnt" /> -->
 
   <section>
     <div class="container">
@@ -47,9 +70,9 @@
           </div>
           <!-- 카드 영역 끝 -->
         </div>
-        <!-- <button @click="next">
+        <button @click="cnt+=1, onSubmit()">
           more
-        </button> -->
+        </button>
       </div>
       <div v-else>
         검색된 자료가 없습니다.
@@ -59,15 +82,16 @@
 </template>
 
 <script>
-import Seacrch from '~/components/Seacrch'
+//import Seacrch from '~/components/Seacrch'
 import Modal from '~/components/Modal'
 export default {
   components: {
-    Seacrch,
+    //Seacrch,
     Modal,
   },
   data() {
     return {
+      searchValue: 'frozen',
       cnt: 1,
       checkList: false
     }
@@ -78,12 +102,37 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchApi/getMovie', { title: 'frozen' })
+    this.$store.dispatch('fetchApi/getMovie',{ title: 'frozen', cnt: 1 })
+  },
+  methods: {
+    onSubmit() {
+      console.log(this.cnt)
+      this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue, cnt: this.cnt })
+    },
+    initMovieList() {
+      this.$store.commit('fetchApi/initMovieList')
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+
+  input {
+    width: 500px;
+    height: 40px;
+  }
+
+  img {
+    height: 35px;
+  }
+}
+
 .card-title {
   font-size: 18px;
   overflow: hidden;
