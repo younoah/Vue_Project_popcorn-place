@@ -7,16 +7,17 @@
           type="text"
           class="form-control"
           placeholder="검색할 영화 제목"
-          aria-label="Recipient's username" 
+          aria-label="Recipient's username"
           aria-describedby="button-addon2"
           @keyup.enter="onSubmit" />
       </div>
       <div>
+        <!-- 선택 요구사항 로딩 애니메이션 처리 -->
         <img
           id="button-addon2"
           type="button"
           class="btn btn-outline-secondary"
-          src="../images/search.svg" 
+          src="../images/search.svg"
           @click="onSubmit" />
       </div>
     </div>
@@ -25,36 +26,34 @@
 
 <script>
 export default {
-  data(){
-    return{
-      searchValue : '',
-      // url : '~/images/search_logo.svg'
+  data() {
+    return {
+      searchValue: '',
     }
   },
-  methods:{
-    onSubmit(){
-      this.$store.dispatch('fetchApi/getMovie',this.searchValue)
-    }
-  }
-
+  methods: {
+    onSubmit() {
+      this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue })
+    },
+  },
 }
 </script>
 
-
 <style lang="scss" scoped>
-.search{
+.search {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
-  
-  input{
+
+  input {
     width: 500px;
     height: 40px;
   }
 
-  img{
+  img {
     height: 35px;
   }
 }
-</style>>
+</style>
+>
