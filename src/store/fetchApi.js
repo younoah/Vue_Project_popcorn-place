@@ -8,29 +8,33 @@ export default {
   },
   mutations: {
     movieListState(state, payload) {
-      Object.keys(payload).forEach((key) => {
-        state[key] = payload[key]
-      })
+      const list = payload.movieList
+      state.movieList = [...state.movieList, ...list]
+    },
+    initMovieList(state){
+      state.movieList = []
     },
     movieDetailState(state, { getDetail }) {
       // 선택 요구사항 높은 해상도 사용
-      if (getDetail){
-        console.log(getDetail.Poster)
+      if (getDetail) {
         getDetail.Poster = getDetail.Poster.replace('SX300', 'SX500')
       }
       state.movieDetail = getDetail
     },
   },
   actions: {
-    async getMovie({ commit }, { title, cnt }) {
-      const getMovie = await fetch(
-        `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&s=${title}&page=${cnt}`
-      ).then((res) => res.json())
+    async getMovie({ commit }, { title, cnt}) {
+   
+      if(title){
+        const getMovie = await fetch(
+          `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&s=${title}&page=${cnt}`
+        ).then((res) => res.json())
 
-      const movieList = getMovie.Search
-      commit('movieListState', {
-        movieList,
-      })
+        const movieList = getMovie.Search
+        commit('movieListState', {
+          movieList,
+        })
+      }
     },
 
     async getDetail({ commit }, id = '') {
