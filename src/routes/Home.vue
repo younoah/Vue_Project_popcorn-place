@@ -14,7 +14,6 @@
           @keyup.enter="cnt=1, initMovieList(), onSubmit()" />
       </div>
       <div>
-        <!-- 선택 요구사항 로딩 애니메이션 처리 -->
         <img
           id="button-addon2"
           type="button"
@@ -24,7 +23,7 @@
       </div>
     </div>
   </header>
-  <!-- <Seacrch/> -->
+  <!-- <Seacrch/> 컴포넌트 영역 -->
 
   <section>
     <div class="container">
@@ -80,6 +79,13 @@
           </button>
         </div>
       </div>
+      <div v-else-if="Lodinged">
+        <!-- 선택 요구사항 로딩 애니메이션 처리 -->
+        <img
+          style="width: 100%"
+          src="https://cdn.roto.codes/images/nyan-cat.gif"
+          alt="Loading..." />
+      </div>
       <div v-else>
         검색된 자료가 없습니다.
       </div>
@@ -98,6 +104,7 @@ export default {
   data() {
     return {
       searchValue: 'frozen',
+      Lodinged : false,
       cnt: 1,
       checkList: false
     }
@@ -114,13 +121,15 @@ export default {
     this.$refs.editor.focus()
   },
   methods: {
-    onSubmit() {
-      this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue, cnt: this.cnt })
+    async onSubmit() {
+      this.Lodinged = true
+      await this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue, cnt: this.cnt })
+      this.Lodinged = false
     },
     initMovieList() {
       this.$store.commit('fetchApi/initMovieList')
     },
-  },
+  }
 }
 </script>
 
