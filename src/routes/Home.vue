@@ -1,11 +1,13 @@
 <template>
+  <!-- <Seacrch/> 컴포넌트 영역 -->
   <header>
     <div class="input-group mb-3 search">
       <div>
         <input
+          ref="editor"
           v-model="searchValue"
           type="text"
-          class="form-control"
+          class="form-control" 
           placeholder="검색할 영화 제목"
           aria-label="Recipient's username"
           aria-describedby="button-addon2"
@@ -22,7 +24,7 @@
       </div>
     </div>
   </header>
-  <!-- <Seacrch @cnt="cnt" /> -->
+  <!-- <Seacrch/> -->
 
   <section>
     <div class="container">
@@ -33,7 +35,6 @@
           v-for="movie in movieList"
           :key="movie.imdbID"
           class="col-12 col-sm-6 col-md-4 col-xl-3">
-          <!-- 카드 영역 시작 -->
           <div
             class="card mb-3"
             style="max-width: 540px">
@@ -68,11 +69,16 @@
               </div>
             </div>
           </div>
-          <!-- 카드 영역 끝 -->
         </div>
-        <button @click="cnt+=1, onSubmit()">
-          more
-        </button>
+
+        <div class="btn-body">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            @click="cnt+=1, onSubmit()">
+            more
+          </button>
+        </div>
       </div>
       <div v-else>
         검색된 자료가 없습니다.
@@ -104,9 +110,11 @@ export default {
   created() {
     this.$store.dispatch('fetchApi/getMovie',{ title: 'frozen', cnt: 1 })
   },
+  mounted(){
+    this.$refs.editor.focus()
+  },
   methods: {
     onSubmit() {
-      console.log(this.cnt)
       this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue, cnt: this.cnt })
     },
     initMovieList() {
@@ -138,5 +146,12 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.btn-body{
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
 }
 </style>
