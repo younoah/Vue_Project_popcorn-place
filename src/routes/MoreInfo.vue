@@ -1,21 +1,27 @@
 <template>
-  <ul class="movie-detail">
-    <li
+  <h1 class="header">
+    More Information
+  </h1>
+  <ul class="movie-moreinfo">
+    <li 
       v-for="i in moreInfomation"
-      :key="i">
+      :key="i"
+      class="movie-moreinfo-li">
       <img
-        class="movie-result-poster"
-        :src="`${i.Poster}`" /><br />
-      <span>제목: {{ i.Title }}</span><br />
-      <span>개봉일: {{ i.Released }}</span><br />
-      <span>작가: {{ i.Writer }}</span><br />
-      <span>개봉년도: {{ i.Year }}</span><br />
-      <span>감독: {{ i.Director }}</span><br />
-      <span>주연 배우: {{ i.Actors }}</span><br />
-      <span>장르: {{ i.Genre }}</span><br />
-      <span>수상: {{ i.Awards }}</span><br />
-      <span>박스오피스: {{ i.BoxOffice }}</span><br />
-      <span>DVD 출시일: {{ i.DVD }}</span>
+        class="movie-moreinfo-poster"
+        :src="`${i.Poster}`" />
+      <div class="movie-moreinfo-detail">
+        <span>제목: {{ i.Title }}</span><br /><br />
+        <span>개봉일: {{ i.Released }}</span><br /><br />
+        <span>작가: {{ i.Writer }}</span><br /><br />
+        <span>개봉년도: {{ i.Year }}</span><br /><br />
+        <span>감독: {{ i.Director }}</span><br /><br />
+        <span>주연 배우: {{ i.Actors }}</span><br /><br />
+        <span>장르: {{ i.Genre }}</span><br /><br />
+        <span>수상: {{ i.Awards }}</span><br /><br />
+        <span>박스오피스: {{ i.BoxOffice }}</span><br /><br />
+        <span>DVD 출시일: {{ i.DVD }}</span>
+      </div>
     </li>
   </ul>
   <button
@@ -45,3 +51,15 @@ export default {
   
 }
 </script>
+<style lang="scss" scoped>
+.movie-moreinfo-li{
+    display: flex;
+    
+    .movie-moreinfo-poster{
+        margin-right: 30px;
+    }
+    .movie-moreinfo-detail{
+        padding:10px
+    }
+}
+</style>

@@ -46,7 +46,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    margin:0;
     background-color: #F73E3E;
     .welcom{
       margin-bottom: 20px;
