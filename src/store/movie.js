@@ -3,9 +3,11 @@ export default {
     state() {
         return {
             movieTitle: '',
+            moreInfomation:{},
             apiKey: '7035c60c',
             totalresult:0,
-            movieInfo:[]
+            movieInfo:[],
+            isLoading:true
 
         }
     },
@@ -21,8 +23,7 @@ export default {
 
         },
         updateMovieInfo(state,newMovieInfo){
-            this.state.movie.movieInfo=newMovieInfo
-            
+            this.state.movie.movieInfo=newMovieInfo            
             console.log(this.state.movie.movieInfo)
 
 
@@ -30,8 +31,9 @@ export default {
         },
         updatetotalresult(state,newMovieInfoTotal){
             this.state.movie.totalresult=newMovieInfoTotal
-
-            
+        },
+        updateMoreInfoMovie(state,newMoreInfo){
+            this.state.movie.moreInfomation=newMoreInfo
         }
     },
     actions: {
@@ -43,9 +45,24 @@ export default {
                 method: 'GET',}).then(res => res.json())
             console.log(movies)
             commit('updateMovieInfo',movies.Search)
-
             commit('updatetotalresult',movies.totalResults)
+            this.state.movie.isLoading=false
+
+
            
+        },
+        async readMovieInfo({commit},payload){
+            const {id}=payload
+            const moreinfo=await fetch(`https://www.omdbapi.com?apikey=${this.state.movie.apiKey}&i=${id}&plot=full`, {
+                method: 'GET',
+            }).then(res => res.json())
+            console.log(moreinfo)
+            commit('updateMoreInfoMovie',{
+                moreinfo
+            })
+            console.log(this.state.movie.moreInfomation)
+            this.state.movie.isLoading=false
+            
         }
     }
 }

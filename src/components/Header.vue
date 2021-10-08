@@ -1,5 +1,8 @@
 <template>
   <header>
+    <div class="welcom">
+      🍿 반갑습니다 고객님 🍿 
+    </div>
     <form 
       class="movie-search"
       @submit.prevent="searchMovies"
@@ -36,6 +39,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
+    display: flex;
+    flex-direction: column;
     width:100%;
     height: 150px;
     display: flex;
@@ -43,8 +48,13 @@ header {
     align-items: center;
     padding: 10px;
     background-color: #F73E3E;
+    .welcom{
+      margin-bottom: 20px;
+      color:azure
+    }
     .movie-search {
       display: flex;
+
       .movie-search-input {
         width: 500px;
         border: none;
