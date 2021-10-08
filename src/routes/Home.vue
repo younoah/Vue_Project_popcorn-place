@@ -7,19 +7,16 @@
           ref="editor"
           v-model="searchValue"
           type="text"
-          class="form-control" 
+          class="form-control"
           placeholder="검색할 영화 제목"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-          @keyup.enter="cnt=1, initMovieList(), onSubmit()" />
+          @keyup.enter=";(cnt = 1), initMovieList(), onSubmit()" />
       </div>
+
       <div>
         <img
-          id="button-addon2"
-          type="button"
           class="btn btn-outline-secondary"
           src="../images/search.svg"
-          @click="cnt=1, initMovieList(), onSubmit()" />
+          @click=";(cnt = 1), initMovieList(), onSubmit()" />
       </div>
     </div>
   </header>
@@ -34,47 +31,14 @@
           v-for="movie in movieList"
           :key="movie.imdbID"
           class="col-12 col-sm-6 col-md-4 col-xl-3">
-          <div
-            class="card mb-3"
-            style="max-width: 540px">
-            <div class="row g-0 item">
-              <div class="col-md-4">
-                <img
-                  :src="movie.Poster"
-                  class="img-fluid rounded-start"
-                  alt="..." />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <div class="card-title">
-                    {{ movie.Title }}
-                  </div>
-                  <p class="card-text">
-                    <small
-                      class="text-muted">{{ movie.Type }} - {{ movie.Year }}</small>
-                  </p>
-                  <div>
-                    <Modal :id="movie.imdbID">
-                      <template #activator>
-                        <button
-                          type="button"
-                          class="btn btn-outline-secondary">
-                          more
-                        </button>
-                      </template>
-                    </Modal>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <CardItem :movie="movie" />
         </div>
 
         <div class="btn-body">
           <button
             type="button"
             class="btn btn-primary btn-lg"
-            @click="cnt+=1, onSubmit()">
+            @click=";(cnt += 1), onSubmit()">
             more
           </button>
         </div>
@@ -94,19 +58,17 @@
 </template>
 
 <script>
-//import Seacrch from '~/components/Seacrch'
-import Modal from '~/components/Modal'
+import CardItem from '~/components/CardItem'
 export default {
   components: {
-    //Seacrch,
-    Modal,
+    CardItem,
   },
   data() {
     return {
       searchValue: 'frozen',
-      Lodinged : false,
+      Lodinged: false,
       cnt: 1,
-      checkList: false
+      checkList: false,
     }
   },
   computed: {
@@ -115,21 +77,24 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchApi/getMovie',{ title: 'frozen', cnt: 1 })
+    this.$store.dispatch('fetchApi/getMovie', { title: 'frozen', cnt: 1 })
   },
-  mounted(){
+  mounted() {
     this.$refs.editor.focus()
   },
   methods: {
     async onSubmit() {
       this.Lodinged = true
-      await this.$store.dispatch('fetchApi/getMovie', { title: this.searchValue, cnt: this.cnt })
+      await this.$store.dispatch('fetchApi/getMovie', {
+        title: this.searchValue,
+        cnt: this.cnt,
+      })
       this.Lodinged = false
     },
     initMovieList() {
       this.$store.commit('fetchApi/initMovieList')
     },
-  }
+  },
 }
 </script>
 
@@ -150,14 +115,7 @@ export default {
   }
 }
 
-.card-title {
-  font-size: 18px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.btn-body{
+.btn-body {
   display: flex;
   margin-top: 30px;
   justify-content: center;
