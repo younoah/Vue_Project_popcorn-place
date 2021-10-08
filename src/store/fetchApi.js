@@ -8,8 +8,12 @@ export default {
   },
   mutations: {
     movieListState(state, payload) {
-      const list = payload.movieList
-      state.movieList = [...state.movieList, ...list]
+      if(payload.movieList){
+        const newlist = payload.movieList
+        state.movieList = [...state.movieList, ...newlist]
+      }else{
+        state.movieList = []
+      }
     },
     initMovieList(state){
       state.movieList = []
