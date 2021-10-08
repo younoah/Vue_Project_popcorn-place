@@ -2,6 +2,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      isLoading: true,
       searchWord: '',
       movies: [],
       page: 0,
@@ -14,21 +15,26 @@ export default {
       Object.keys(payload).forEach((key) => {
         state[key] = payload[key];
       });
-
-      console.log(state);
     },
     initPage(state) {
       state.page = 1;
-      console.log(state);
     },
     increasePage(state) {
       state.page++;
-      console.log(state);
+    },
+    startLoading(state) {
+      state.isLoading = true;
+      console.log(state.isLoading);
+    },
+    endLoading(state) {
+      state.isLoading = false;
+      console.log(state.isLoading);
     },
   },
 
   actions: {
     async searchMovies({ commit, state }, payload) {
+      commit('startLoading');
       const { searchWord, page } = payload;
       try {
         const { Search } = await _request({ searchWord, page });
@@ -42,9 +48,11 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      commit('endLoading');
     },
 
     async getMovieInfo({ commit }, payload) {
+      commit('startLoading');
       const { id, plot } = payload;
       try {
         const info = await _request({ id, plot });
@@ -55,6 +63,7 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      commit('endLoading');
     },
   },
 };

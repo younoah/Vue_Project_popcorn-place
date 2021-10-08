@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="!isLoading">
     <div class="inner">
       <div class="poster">
         <img
@@ -24,18 +24,24 @@
 <script>
 
 export default {
-  components: {
-    
+  data() {
+    return {
+      done: false
+    };
   },
   computed: {
     info() {
       return this.$store.state.movie.info;
+    },
+    isLoading() {
+      return this.$store.state.movie.isLoading;
     }
   },
   created() {
     this.$store.dispatch('movie/getMovieInfo', {
       id: this.$route.params.id
     });
+    console.log('done!');
   }
 };
 </script>
