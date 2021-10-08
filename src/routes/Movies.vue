@@ -112,7 +112,6 @@ section {
 
 .content {
   text-align: center;
-  z-index: 1;
   .badge {
     margin: 5px;
   }
