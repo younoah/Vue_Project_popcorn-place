@@ -1,15 +1,9 @@
 <template>
-  <h1>
-    Hello world
-  </h1>
+  <RouterView />
 </template>
 
 <script>
-export default {
-    
-};
 </script>
 
 <style>
-
 </style>
