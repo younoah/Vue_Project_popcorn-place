@@ -100,5 +100,9 @@ export default {
       float: right;
     }
   }
+  img{
+    float: left;
+    padding-right: 20px;
+  }
 }
 </style>
