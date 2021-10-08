@@ -35,6 +35,7 @@
           </div>
         </div>
         <div v-else>
+          <!-- 선택 요구사항 로딩 애니메이션 처리 -->
           <img
             style="width: 100%"
             src="https://cdn.roto.codes/images/nyan-cat.gif"
@@ -89,6 +90,7 @@ export default {
   justify-content: center;
   align-items: center;
   &__inner {
+    overflow: scroll;
     background-color: white;
     box-sizing: border-box;
     padding: 20px;
