@@ -20,6 +20,8 @@ export default {
     },
     methods: {
         async onSearch() {
+            const options = {title: this.title, page: this.page};
+            console.log(await this.$getMovies(options));
         },
     }
 };
