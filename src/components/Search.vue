@@ -30,6 +30,12 @@ export default {
         searchWord,
         page: this.$store.state.movie.page
       });
+
+      if (this.$router.currentRoute.value.fullPath !== '/') {
+        this.$router.push({
+         name:'Movie',
+       });
+      }
     }
   }
 };

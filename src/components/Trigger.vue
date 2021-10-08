@@ -29,8 +29,8 @@
       }, 
       {
         root:null,
-        threshold: 0.5,
-        rootMargin: '100px'
+        threshold: 0,
+        rootMargin: '200px 0px'
       });
 
       this.observer.observe(this.$refs.trigger);

@@ -5,6 +5,7 @@ export default {
       searchWord: '',
       movies: [],
       page: 0,
+      info: {},
     };
   },
   getters: {},
@@ -42,14 +43,35 @@ export default {
         console.error(error);
       }
     },
+
+    async getMovieInfo({ commit }, payload) {
+      const { id, plot } = payload;
+      try {
+        const info = await _request({ id, plot });
+        commit('assignState', {
+          info,
+        });
+        console.log(info);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
 
 const OMDB_API_KEY = '7035c60c';
 const API_END_POINT = 'https://www.omdbapi.com';
 async function _request(options) {
-  const { searchWord = '', page = 0 } = options;
-  return await fetch(
-    `${API_END_POINT}?apikey=${OMDB_API_KEY}&s=${searchWord}&page=${page}`
-  ).then((res) => res.json());
+  const hasSearchWord = Object.keys(options).includes('searchWord');
+  if (hasSearchWord) {
+    const { searchWord = '', page = 0 } = options;
+    return await fetch(
+      `${API_END_POINT}?apikey=${OMDB_API_KEY}&s=${searchWord}&page=${page}`
+    ).then((res) => res.json());
+  } else {
+    const { id = '', plot = 'full' } = options;
+    return await fetch(
+      `${API_END_POINT}?apikey=${OMDB_API_KEY}&i=${id}&plot=${plot}`
+    ).then((res) => res.json());
+  }
 }

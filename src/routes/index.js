@@ -5,13 +5,16 @@ import Info from './Info';
 export default createRouter({
   history: createWebHistory(),
   scrollBehavior: () => ({ top: 0 }),
+
   routes: [
     {
+      name: 'Movie',
       path: '/',
       component: Movie,
     },
     {
-      path: '/info',
+      name: 'Info',
+      path: '/info/:id',
       component: Info,
     },
   ],

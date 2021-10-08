@@ -1,8 +1,16 @@
 <template>
-  <div class="wrapper">
+  <div
+    class="wrapper"
+    @click="$router.push({
+      name:'Info',
+      params: {
+        id: movie.imdbID
+      }
+    })">
     <img
-      :src="movie.Poster"
-      :alt="movie.Title" />
+      :class="{'no-poster' : !hasPoster}"
+      :src="hasPoster ? movie.Poster : none"
+      :alt="movie.Title + `-poster`" />
   </div>
 </template>
 
@@ -14,6 +22,11 @@ export default {
       default: () => ({})
     }
   },
+  data() {
+    return {
+      hasPoster: this.movie.Poster !== 'N/A'
+    };
+  },
 };
 </script>
 
@@ -22,6 +35,12 @@ export default {
   margin: 2.5rem;
   img {
     max-width: 250px;
+  }
+  img.no-poster{
+    display: block;
+    width: 400px;
+    height: 380px;
+    background-color: gray;
   }
 }
 </style>
