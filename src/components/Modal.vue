@@ -48,11 +48,11 @@
 
 <script>
 export default {
-  props:{
-    id:{
-      type : String,
-      default : null
-    }
+  props: {
+    id: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {

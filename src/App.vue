@@ -5,7 +5,6 @@
 </template>
 
 <style lang="scss" scoped>
-body{
-
+body {
 }
 </style>

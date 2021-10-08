@@ -8,14 +8,14 @@ export default {
   },
   mutations: {
     movieListState(state, payload) {
-      if(payload.movieList){
+      if (payload.movieList) {
         const newlist = payload.movieList
         state.movieList = [...state.movieList, ...newlist]
-      }else{
+      } else {
         state.movieList = []
       }
     },
-    initMovieList(state){
+    initMovieList(state) {
       state.movieList = []
     },
     movieDetailState(state, { getDetail }) {
@@ -27,9 +27,8 @@ export default {
     },
   },
   actions: {
-    async getMovie({ commit }, { title, cnt}) {
-   
-      if(title){
+    async getMovie({ commit }, { title, cnt }) {
+      if (title) {
         const getMovie = await fetch(
           `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&s=${title}&page=${cnt}`
         ).then((res) => res.json())
