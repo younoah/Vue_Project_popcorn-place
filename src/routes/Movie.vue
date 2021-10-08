@@ -1,6 +1,9 @@
 <template>
   <section>
     <div class="inner">
+      <NotFoundMovies
+        v-if="$store.state.movie.notFoundMovies"
+        :search-word="$store.state.movie.searchWord" />
       <MovieItem
         v-for="movie in movies" 
         :key="movie.imdbID" 
@@ -11,17 +14,22 @@
 </template>
 
 <script>
+import NotFoundMovies from '~/components/NotFoundMovies';
 import MovieItem from '~/components/MovieItem';
 import Trigger from '~/components/Trigger';
 
 export default {
   components: {
+    NotFoundMovies,
     MovieItem,
-    Trigger
+    Trigger,
   },
   computed: {
     movies() {
       return this.$store.state.movie.movies;
+    },
+    isLoading() {
+      return this.$store.state.movie.isLoading;
     }
   },
   methods: {

@@ -7,6 +7,7 @@ export default {
       movies: [],
       page: 0,
       info: {},
+      notFoundMovies: false,
     };
   },
   getters: {},
@@ -15,6 +16,7 @@ export default {
       Object.keys(payload).forEach((key) => {
         state[key] = payload[key];
       });
+      console.log(state);
     },
     initPage(state) {
       state.page = 1;
@@ -30,6 +32,12 @@ export default {
       state.isLoading = false;
       console.log(state.isLoading);
     },
+    notFoundMovies(state) {
+      state.notFoundMovies = true;
+    },
+    foundMovies(state) {
+      state.notFoundMovies = false;
+    },
   },
 
   actions: {
@@ -38,13 +46,22 @@ export default {
       const { searchWord, page } = payload;
       try {
         const { Search } = await _request({ searchWord, page });
-        commit('assignState', {
-          searchWord,
-          movies:
-            searchWord === state.searchWord
-              ? [...state.movies, ...Search]
-              : Search,
-        });
+        if (Search) {
+          commit('foundMovies');
+          commit('assignState', {
+            searchWord,
+            movies:
+              searchWord === state.searchWord
+                ? [...state.movies, ...Search]
+                : Search,
+          });
+          console.log(Search);
+        } else {
+          commit('notFoundMovies');
+          commit('assignState', {
+            searchWord,
+          });
+        }
       } catch (error) {
         console.error(error);
       }
