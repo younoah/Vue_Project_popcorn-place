@@ -10,3 +10,8 @@
   port = 8080
   publish = "dist"
   autoLaunch = false
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
