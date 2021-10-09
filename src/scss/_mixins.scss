@@ -1,0 +1,7 @@
+@mixin content-loading($color) {
+  &--loading {
+    color: $color;
+    background: $color;
+    border-radius: 0.5rem;
+  }
+}

@@ -1,0 +1,16 @@
+@keyframes display-results {
+  0% {
+    display: none;
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  5% {
+    display: block;
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
