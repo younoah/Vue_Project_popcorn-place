@@ -1,9 +1,9 @@
 import type { MovieSearchResponse, MovieDetailResponse } from "@/types/movie";
 
 const API_KEY = process.env.VUE_APP_API_KEY;
-const API_PREFIX = "https://www.omdbapi.com";
+const API_END_POINT = process.env.VUE_APP_API_END_POINT;
 
-export const BASE_URL = `${API_PREFIX}/?apikey=${API_KEY}`;
+export const BASE_URL = `${API_END_POINT}/?apikey=${API_KEY}`;
 
 const request: typeof fetch = async (input, init) => {
   const response = await fetch(input, init);
