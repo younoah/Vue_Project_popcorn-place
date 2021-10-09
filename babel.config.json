@@ -1,0 +1,12 @@
+{
+  "presets": ["@babel/preset-env"], // 변환은 해주지만 전역오염 가능성
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime", // 전역오염 방지. 사용되는 문법만 변환
+      {
+        // 옵션
+        "corejs": 3
+      }
+    ]
+  ]
+}
