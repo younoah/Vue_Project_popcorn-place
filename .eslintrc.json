@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true, // 브라우저에서 사용사는 전역객체에 대해 알아야 한다고 알려주는것
+    "node": true // nodejs의 전역 api를 체크해야 한다는걸 알려주는것
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended"
+  ],
+  "rules": {
+    "semi": ["error", "always"], // 세미콜론 붙일꺼 안붙일꺼?
+    "quotes":["error", "single"], // 큰따옴표 작은따옴표?
+    "vue/html-closing-bracket-newline": ["error", { // > 줄바꿈 안바꿈?
+      "singleline": "never",
+      "multiline": "never"
+    }],
+    "vue/html-self-closing": ["error", { // tag 닫기
+      "html": {
+        "void": "always",
+        "normal": "never",
+        "component": "always"
+      },
+      "svg": "always",
+      "math": "always"
+    }]
+  }
+}
