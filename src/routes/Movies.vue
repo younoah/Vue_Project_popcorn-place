@@ -78,8 +78,11 @@ section {
     @media (max-width: 800px) {
       grid-template-columns: repeat(3, 1fr);
     }
-    @media (max-width: 550px) {
+    @media (max-width: 600px) {
       grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 450px) {
+      grid-template-columns: repeat(1, 0.8fr);
     }
 
     li {
