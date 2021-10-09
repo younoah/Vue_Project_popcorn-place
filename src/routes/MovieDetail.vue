@@ -19,7 +19,8 @@
       <img
         :src="movieDetails.Poster !== 'N/A'
           ? movieDetails.Poster.replace('300', '700')
-          : 'https://allmovies.tube/assets/img/no-poster.png'">
+          : 'https://allmovies.tube/assets/img/no-poster.png'"
+        :alt="movieDetails.Title">
       <ul>
         <template
           v-for="rating in movieDetails.Ratings"
