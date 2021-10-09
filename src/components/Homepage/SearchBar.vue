@@ -1,14 +1,16 @@
 <template>
-  <header>
-    <input
-      type="text"
-      placeholder="제목을 입력하세요"
-      :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @keyup.enter="$emit('search')" />
-    <button @click="$emit('search')">
-      찾기
-    </button>
+  <header class="header">
+    <div class="header__home">
+      <input  
+        type="text"
+        placeholder="영화 제목 / 관련 키워드 입력"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
+        @keyup.enter="$emit('search')" />
+      <button @click="$emit('search')">
+        찾기
+      </button>
+    </div>
   </header>
 </template>
 
@@ -24,8 +26,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-header {
+<style scoped lang="scss">
+.header__home {
   display: flex;
   justify-content: center;
   align-items: center;

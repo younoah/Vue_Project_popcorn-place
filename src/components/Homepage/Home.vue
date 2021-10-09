@@ -38,6 +38,9 @@ export default {
         }
       });
     },
+    mounted() {
+        console.log(this.$route);
+    },
     methods: {
         async onSearch() {
             if(this.isLoading) return; 

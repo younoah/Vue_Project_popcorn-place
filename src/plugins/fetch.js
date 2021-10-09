@@ -5,6 +5,13 @@ export default {
                 method: 'POST',
                 body: JSON.stringify(options)
             }).then(res => res.json());
-        }; 
+        };
+
+        app.config.globalProperties.$getMovieInfo = (options) => {
+            return fetch('/.netlify/functions/movieinfo',{
+                method: 'POST',
+                body: JSON.stringify(options)
+            }).then(res => res.json());
+        };  
     }
 };
