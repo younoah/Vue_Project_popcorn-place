@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="!isLoading && !movieSelected" />
-  <section
+  <section 
     v-else
     :key="$route.params.page">
     <div

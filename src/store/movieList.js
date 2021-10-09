@@ -22,19 +22,18 @@ export default {
         },
     },
     actions: {
-        async readMovieList({commit, state}, payload){
-            const { searchTitle, page } = payload
+        async readMovieList({commit, state}, options){
             state.isLoading = false
-            const movieList = await fetch(`https://www.omdbapi.com?apikey=7035c60c&s=${searchTitle}&page=${page}`, {
-                    method: 'GET'
+            const movieList = await fetch('/.netlify/functions/getMovieList', {
+                    method: 'POST',
+                    body: JSON.stringify(options)
                 }).then(res => res.json())
+            state.isLoading = true
             if(movieList.Response === 'True'){
                 commit('assignState', {
+                    ...options,
                     totalResults: movieList.totalResults,
                     movieList: movieList.Search,
-                    searchTitle,
-                    page,
-                    isLoading: true
                 })
             }else{
                 state.movieList = []
@@ -42,16 +41,16 @@ export default {
                 state.searchTitle = ''
             }
         },
-        async readMovieItem({ commit, state }, payload){
-            const { searchId } = payload
+        async readMovieItem({ commit, state }, options){
             state.isLoading = false
             try{
-                const selectedMovie = await fetch(`https://www.omdbapi.com?apikey=7035c60c&i=${searchId}&plot=short`, {
-                    method: 'GET'
+                const selectedMovie = await fetch('/.netlify/functions/getMovieItem', {
+                    method: 'POST',
+                    body: JSON.stringify(options)
             }).then(res => res.json())
             commit('assignState', {
+                ...options,
                 selectedMovie,
-                searchId,
                 isLoading: true
             })
             } catch(error){
