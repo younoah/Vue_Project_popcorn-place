@@ -27,11 +27,12 @@ export default {
     },
   },
   actions: {
-    async getMovie({ commit }, { title, cnt }) {
-      if (title) {
-        const getMovie = await fetch(
-          `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&s=${title}&page=${cnt}`
-        ).then((res) => res.json())
+    async getMovie({ commit }, options) {
+      if (options.title) {
+        const getMovie = await fetch('/.netlify/functions/getMovie', {
+          method: 'POST',
+          body: JSON.stringify(options),
+        }).then((res) => res.json())
 
         const movieList = getMovie.Search
         commit('movieListState', {
@@ -40,10 +41,12 @@ export default {
       }
     },
 
-    async getDetail({ commit }, id = '') {
-      const getDetail = await fetch(
-        `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&i=${id}&plot=full`
-      ).then((res) => res.json())
+    async getDetail({ commit }, options) {
+      options = { id: options }
+      const getDetail = await fetch('/.netlify/functions/getDetail', {
+        method: 'POST',
+        body: JSON.stringify(options),
+      }).then((res) => res.json())
 
       commit('movieDetailState', {
         getDetail,
