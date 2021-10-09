@@ -26,7 +26,7 @@
   </ul>
 </template>
 <style lang="scss" scoped>
-.movie-list {
+.movie-search-list {
   position: absolute;
   top: calc(100% + 2rem);
   z-index: 1;
