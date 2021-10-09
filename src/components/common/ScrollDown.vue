@@ -12,7 +12,7 @@
   height: 46px;
   margin: 8px auto;
   text-align: center;
-  border: 2px solid variables.$brand-light;
+  border: 2px solid colors.$brand-light;
   border-radius: 30px;
 
   &-p1,
@@ -20,7 +20,7 @@
     animation-name: scrolldown;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    fill: variables.$brand-light;
+    fill: colors.$brand-light;
   }
 
   &-p2 {

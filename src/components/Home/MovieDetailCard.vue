@@ -53,7 +53,7 @@
 <style lang="scss" scoped>
 .movie-detail-card {
   max-width: 72rem;
-  background: variables.$card-bg-color;
+  background: colors.$card-bg-color;
 
   &__container {
     display: flex;
@@ -79,26 +79,26 @@
   }
 
   &__title {
-    @include mixins.content-loading(variables.$brand-dark);
-    @include text-style.font-style(20, white);
+    @include mixins.content-loading(colors.$brand-dark);
+    @include typography.font-style(20, white);
 
     margin: 0 0 1rem;
   }
 
   &__run-time {
-    @include mixins.content-loading(variables.$brand-dark);
-    @include text-style.font-style(16, variables.$brand-dark);
+    @include mixins.content-loading(colors.$brand-dark);
+    @include typography.font-style(16, colors.$brand-dark);
   }
 
   &__plot {
-    @include mixins.content-loading(variables.$brand-dark);
-    @include text-style.font-style(16);
+    @include mixins.content-loading(colors.$brand-dark);
+    @include typography.font-style(16);
 
     overflow: hidden;
   }
 
   &__thumbnail {
-    @include mixins.content-loading(variables.$brand-dark);
+    @include mixins.content-loading(colors.$brand-dark);
 
     position: relative;
     order: 0;
@@ -118,8 +118,8 @@
   }
 
   &__year {
-    @include mixins.content-loading(variables.$brand-dark);
-    @include text-style.font-style(12, white);
+    @include mixins.content-loading(colors.$brand-dark);
+    @include typography.font-style(12, white);
 
     position: absolute;
     top: 2rem;
@@ -130,7 +130,7 @@
     justify-content: center;
     width: 6rem;
     height: 6rem;
-    background: variables.$brand-dark;
+    background: colors.$brand-dark;
     border-radius: 50%;
   }
 

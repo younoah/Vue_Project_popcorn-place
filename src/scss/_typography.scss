@@ -14,28 +14,28 @@ $font-size-24: 24px;
 $line-height-24: 32px;
 
 @mixin font-style-12 {
-  font-size: typography.$font-size-12;
-  line-height: typography.$line-height-12;
+  font-size: $font-size-12;
+  line-height: $line-height-12;
 }
 
 @mixin font-style-14 {
-  font-size: typography.$font-size-14;
-  line-height: typography.$line-height-14;
+  font-size: $font-size-14;
+  line-height: $line-height-14;
 }
 
 @mixin font-style-16 {
-  font-size: typography.$font-size-16;
-  line-height: typography.$line-height-16;
+  font-size: $font-size-16;
+  line-height: $line-height-16;
 }
 
 @mixin font-style-20 {
-  font-size: typography.$font-size-20;
-  line-height: typography.$line-height-20;
+  font-size: $font-size-20;
+  line-height: $line-height-20;
 }
 
 @mixin font-style-24 {
-  font-size: typography.$font-size-24;
-  line-height: typography.$line-height-24;
+  font-size: $font-size-24;
+  line-height: $line-height-24;
 }
 
 @mixin font-style($size, $color: false) {

@@ -37,7 +37,7 @@ export default defineComponent({
       display: block;
       width: 6px;
       height: 18px;
-      background: variables.$brand-dark;
+      background: colors.$brand-dark;
       border-radius: 20%;
       content: "";
     }

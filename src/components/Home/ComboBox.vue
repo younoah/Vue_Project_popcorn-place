@@ -65,11 +65,11 @@ export default defineComponent({
   width: 72rem;
 
   h1 {
-    @include text-style.font-style(24, variables.$brand-light);
+    @include typography.font-style(24, colors.$brand-light);
   }
 
   &__label {
-    @include text-style.font-style(16);
+    @include typography.font-style(16);
 
     display: flex;
     align-items: center;
