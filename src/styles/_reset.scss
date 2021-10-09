@@ -1,0 +1,15 @@
+button {
+	border: none;
+	background-color: inherit;
+	padding: 0;
+	cursor: pointer;
+}
+
+*:focus {
+	outline-color: $COLOR_RED;
+}
+
+dt, dd {
+	display: inline-block;
+}
+

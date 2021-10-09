@@ -1,0 +1,20 @@
+@use 'sass:map';
+
+$flex-key: (
+	between: space-between,
+	around: space-around,
+	center: center,
+	start: flex-start,
+	end: flex-end,
+	stretch: stretch
+);
+
+@function _get-flex-value ($key) {
+	@return map.get($flex-key, $key)
+};
+
+@mixin flexbox($display: flex, $jc: center, $ai: center) {
+	display: $display;
+	justify-content: _get-flex-value($jc);
+	align-items: _get-flex-value($ai);
+}
