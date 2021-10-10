@@ -1,7 +1,7 @@
 <template>
   <div class="Home">
     <div class="Home-hearder">
-      <h1>🎬welcom!</h1>
+      <h1>🎬welcome!</h1>
     </div>
     <div class="Home-title1">
       🥨예매 사이트🥤
