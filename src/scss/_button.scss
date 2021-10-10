@@ -1,0 +1,11 @@
+@import '~/scss/_color.scss';
+@mixin red-button{
+  background-color:$color-button-red;
+  border:none;
+  color: white;
+  border-radius: 5px;
+  &:hover{
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
