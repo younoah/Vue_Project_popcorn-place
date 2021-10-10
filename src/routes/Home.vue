@@ -60,6 +60,8 @@ export default {
 
   .title {
     font-size: 50px;
+    text-align: center;
+    word-break: keep-all;
     font-weight: 700;
     margin-bottom: $BASE_PADDING * 4;
   }
