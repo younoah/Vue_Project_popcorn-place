@@ -47,6 +47,11 @@ module.exports = {
         // to:''의 경우,output.path를 기본적으로 참조하기 때문에 dist에 둘 생각이면 생략해도 된다.
       ],
     }),
+
   ],
+  devServer: {
+    port: 8079,
+    historyApiFallback: true
+  }
 }
 // path.resolve()를 사용하면 절대경로로 잡힌다.
