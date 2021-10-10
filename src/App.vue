@@ -14,35 +14,34 @@
 import Header from '~/components/Header'
 
 
-export default{
-  components:{
+export default {
+  components: {
     Header,
   },
-  data(){
-    return{
-    }
+  data() {
+    return {}
   },
-  computed:{
-    storeMsg(){
+  computed: {
+    storeMsg() {
       return this.$store.state.msg
     },
-      storeMessage(){
+    storeMessage() {
       return this.$store.state.message.message //네임스페이스.모듈
     },
   },
-  methods:{
-    increaseCounts(){
+  methods: {
+    increaseCounts() {
       this.$store.commit('increaseCounts')
     },
-    fetchTodo(){
+    fetchTodo() {
       this.$store.dispatch('fetchTodo')
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-.movieresult_container{
-  height:130vh;
+.movieresult_container {
+  height: 150vh;
   background-color: black;
 }
 </style>

@@ -1,21 +1,20 @@
 <template>
   <header>
-    <button 
-      class="welcom"
-      @click="$router.push({name:'Home'})">
-      🍿 주영 시네마 🍿 
-    </button>
-    <form 
+    <img
+      class="logo"
+      src="https://user-images.githubusercontent.com/66211721/136692998-a4b5009a-9ab0-4640-a762-4001ce3d90ed.png"
+      alt="logo" 
+      @click="$router.push({name:'Home'})" />
+    <form
       class="movie-search"
       @submit.prevent="searchMovies"
       @submit="$router.push({name:'Movie'})">
       <input
         v-model="movieTitle"
         class="movie-search-input"
-        type="text" 
+        type="text"
         placeholder="영화제목을 입력하세요" />
-      <button 
-        class="movie-search-submit">
+      <button class="movie-search-submit">
         🔎
       </button>
     </form>
@@ -31,7 +30,7 @@ export default {
   },
   methods: {
     searchMovies() {
-      this.$store.dispatch('movie/searchMovies',{
+      this.$store.dispatch('movie/searchMovies', {
         movieTitle: this.movieTitle
       })
     }
@@ -41,54 +40,63 @@ export default {
 
 <style lang="scss" scoped>
 header {
-    display: flex;
-    flex-direction: column;
-    width:100%;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #F73E3E;
+  .logo{
+    height: 250px;;
+    margin:0px;
+    padding:0px;
+    cursor: pointer;
+
+  }
+  .welcom {
+    border: none;
     background-color: #F73E3E;
-    .welcom{
-      border:none;
-      background-color: #F73E3E;
-      font-size:30px;
-      margin-bottom: 20px;
-      color:white;
-      &:hover{
-          color:lightcoral;
-      }
+    font-size: 30px;
+    color: white;
+    &:hover {
+      color: lightcoral;
     }
-    .movie-search {
+  }
+
+  .movie-search {
+    display: flex;
+
+    .movie-search-input {
+      height:50px;
+      width: 500px;
+      border-right: none;
+      border: none;
+      border-radius: 0.1rem;
+      background-color: white;
+
+      &::placeholder {
+        color: black;
+      }
+
+    }
+
+    .movie-search-submit {
+      height: 53px;
+      background-color: white;
       display: flex;
-
-      .movie-search-input {
-        width: 500px;
-        border-right:none;
-        border: none;
-        border-radius: 0.1rem;
-        background-color: white;
-        &::placeholder{
-        color: black ;
-    }
-
-    }
-      .movie-search-submit {
-        height: 509px;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        height: 35px;
-        min-width: 60px;
-        border: none;
-        border-radius: 0.1rem;
-        padding: 8px;
-        &:hover{
-          background-color:lightcoral;
-        }
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      min-width: 60px;
+      border: none;
+      border-radius: 0.1rem;
+      &:hover {
+        background-color: lightcoral;
       }
     }
+  }
 }
 </style> 

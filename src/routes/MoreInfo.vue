@@ -3,7 +3,7 @@
     More Information
   </h1>
   <ul class="movie-moreinfo">
-    <li 
+    <li
       v-for="i in moreInfomation"
       :key="i"
       class="movie-moreinfo-li">
@@ -34,50 +34,50 @@
 <script>
 
 export default {
-    components:{
-        
-    },
-    computed:{
-        moreInfomation(){
-            const moreInfo=this.$store.state.movie.moreInfomation
+    computed: {
+        moreInfomation() {
+            const moreInfo = this.$store.state.movie.moreInfomation
             return moreInfo
         }
     },
-    async created(){
-     await this.$store.dispatch('movie/readMovieInfo', {
+    async created() {
+        await this.$store.dispatch('movie/readMovieInfo', {
             id: this.$route.params.id
         })
     }
-  
 }
 </script>
 <style lang="scss" scoped>
-.header{
-    color:white;
+.header {
+    color: white;
     padding-top: 10px;
     padding-left: 40px;
-    margin:0px
+    margin: 0px
 }
-.movie-moreinfo-li{
+
+.movie-moreinfo-li {
     display: flex;
-    
-    .movie-moreinfo-poster{
+
+    .movie-moreinfo-poster {
         margin-right: 30px;
     }
-    .movie-moreinfo-detail{
-        padding:10px;
-        color:white;
+
+    .movie-moreinfo-detail {
+        padding: 10px;
+        color: white;
     }
 }
-.movie-moreinfo-prev{
 
-  margin-left:30px;
-  font-size:20px;
-  border:none;
-  background-color: black;
-  color: white;
-    &:hover{
-      color:royalblue;
+.movie-moreinfo-prev {
+
+    margin-left: 30px;
+    font-size: 20px;
+    border: none;
+    background-color: black;
+    color: white;
+
+    &:hover {
+        color: royalblue;
     }
 }
 </style>
