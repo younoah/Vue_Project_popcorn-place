@@ -7,11 +7,11 @@
 
 <style lang="scss" scoped>
 .loading {
-  @include init-loading-position;
+  @include init-position;
   z-index: 2;
 
   &__overlay {
-    @include init-loading-position;
+    @include init-position;
     opacity: 0.7;
     background-color: #141414;
   }

@@ -54,4 +54,25 @@ export default {
     margin: 0 0.5rem;
   }
 }
+
+@media screen and (max-width: 837px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+
+    &__right {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__right > a {
+      margin-top: 1rem;
+    }
+
+    &__separator {
+      display: none;
+    }
+  }
+}
 </style>

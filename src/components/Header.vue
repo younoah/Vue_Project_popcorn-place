@@ -50,4 +50,66 @@
     margin-right: 1rem;
   }
 }
+
+@media screen and (max-width: $breakpoint-xs - 1) {
+  .header {
+    @include flex-align-center;
+
+    &__title {
+      font-size: $size-font-lg;
+      margin: 0;
+    }
+
+    &__description {
+      display: none;
+    }
+
+    &__right {
+      display: none;
+    }
+
+    &__menu {
+      display: block;
+      position: absolute;
+      left: 1rem;
+      top: 1.2rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .header {
+    @include flex-align-center;
+
+    &__title {
+      font-size: $size-font-lg;
+      margin: 0;
+    }
+
+    &__description {
+      display: none;
+    }
+
+    &__right {
+      display: none;
+    }
+
+    &__menu {
+      display: block;
+      position: absolute;
+      left: 1rem;
+      top: 1.2rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .header {
+    &__right {
+      display: none;
+    }
+  }
+}
 </style>

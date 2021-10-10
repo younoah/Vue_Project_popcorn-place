@@ -151,4 +151,50 @@ export default {
     font-size: $size-font-lg;
   }
 }
+
+@media screen and (max-width: $breakpoint-xs - 1) {
+  .main {
+    &__result {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__guidance {
+      padding-top: 6rem;
+      font-size: $size-font-md;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .main {
+    &__result {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__guidance {
+      padding-top: 6rem;
+      font-size: $size-font-lg;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .main {
+    &__result {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__guidance {
+      font-size: $size-font-lg;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-md) and (max-width: $breakpoint-xl - 1) {
+  .main {
+    &__result {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
 </style>

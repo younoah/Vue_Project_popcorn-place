@@ -65,10 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 .details-modal {
-  @include init-modal-position;
+  @include init-position;
 
   &__overlay {
-    @include init-modal-position;
+    @include init-position;
     opacity: 0.6;
     background-color: #141414;
   }

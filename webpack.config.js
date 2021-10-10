@@ -39,7 +39,6 @@ module.exports = {
               additionalData: `
               @use "sass:color";
               @import "~/scss/_mixins";
-              @import "~/scss/_types";
               @import "~/scss/_variables";
             `
             }

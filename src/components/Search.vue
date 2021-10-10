@@ -9,7 +9,7 @@
     </div>
     <form class="search__form" @submit.prevent>
       <fieldset>
-        <legend class="blind">검색 결과</legend>
+        <legend class="search__legend">검색 결과</legend>
         <label>
           <input
             :value="keyword"
@@ -68,6 +68,10 @@ export default {
     width: 60%;
   }
 
+  &__legend {
+    @include blind;
+  }
+
   &__input {
     display: flex;
     box-sizing: border-box;
@@ -79,6 +83,42 @@ export default {
     border-radius: 0.5rem;
     background: #fff;
     box-shadow: 0px 0.5rem 1.25rem rgb(0 0 0 / 16%);
+  }
+}
+
+@media screen and (max-width: $breakpoint-xs - 1) {
+  .search {
+    &__form {
+      top: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    &__input {
+      font-size: $size-font-xs;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-xs) and (max-width: $breakpoint-sm - 1) {
+  .search {
+    &__form {
+      top: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    &__input {
+      font-size: $size-font-xs;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1) {
+  .search {
+    &__input {
+      font-size: $size-font-md;
+    }
   }
 }
 </style>
