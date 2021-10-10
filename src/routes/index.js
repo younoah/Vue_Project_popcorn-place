@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './Home';
+import SearchResults from './SearchResults';
 
 export default createRouter({
   history: createWebHistory(),
@@ -7,7 +7,14 @@ export default createRouter({
   routes: [
     {
       path: '/',
-      component: Home
+      component: SearchResults,
+      children: [
+        {
+          name: 'SearchResults',
+          path: 'search/:keyword',
+          component: SearchResults
+        }
+      ]
     }
   ]
 });

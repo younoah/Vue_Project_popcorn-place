@@ -1,6 +1,7 @@
 <template>
   <Header />
   <Search />
+  <RouterView />
 </template>
 
 <script>

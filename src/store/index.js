@@ -1,5 +1,7 @@
 import { createStore } from 'vuex';
 import { fetchItems } from '/functions/fetchItems';
+import { fetchDetails } from '/functions/fetchDetails';
+import router from '~/routes';
 
 export default createStore({
   state() {
@@ -8,6 +10,9 @@ export default createStore({
       keyword: '',
       pageNumber: 0,
       results: [],
+      selectedMovieId: '',
+      selectedMovieDetails: {},
+      modalStatus: false,
       isLoading: false
     };
   },
@@ -29,6 +34,15 @@ export default createStore({
     increasePageNumber(state) {
       state.pageNumber++;
     },
+    saveSelectedMovieId(state, newSelectedMovieId) {
+      state.selectedMovieId = newSelectedMovieId;
+    },
+    saveSelectedMovieDetails(state, newSelectedMovieDetails) {
+      state.selectedMovieDetails = newSelectedMovieDetails;
+    },
+    changeModalStatus(state) {
+      state.modalStatus = !state.modalStatus;
+    },
     changeLoadingStatus(state) {
       state.isLoading = !state.isLoading;
     }
@@ -42,6 +56,14 @@ export default createStore({
         return;
       }
 
+      router.push({
+        name: 'SearchResults',
+        params: {
+          keyword: state.keyword
+        }
+      });
+
+      await commit('initState');
       await commit('changeLoadingStatus');
       await commit('increasePageNumber');
 
@@ -53,8 +75,25 @@ export default createStore({
         return;
       }
 
-      await commit('initState');
       await commit('updateResults', Search);
+    },
+    async fetchNextSearchResults({ commit, state }) {
+      await commit('changeLoadingStatus');
+      await commit('increasePageNumber');
+
+      const { Search } = await fetchItems(state.keyword, state.pageNumber);
+
+      if (!Search) {
+        alert('마지막 항목입니다.');
+        return;
+      }
+
+      await commit('updateResults', Search);
+      await commit('changeLoadingStatus');
+    },
+    async fetchSelectedMovieDetails({ commit, state }) {
+      const selectedMovieDetails = await fetchDetails(state.selectedMovieId);
+      commit('saveSelectedMovieDetails', selectedMovieDetails);
     }
   }
 });
