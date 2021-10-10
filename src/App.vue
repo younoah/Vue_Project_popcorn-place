@@ -40,6 +40,7 @@ body {
   min-width: 17.5rem;
   height: 100%;
   margin: 0;
+  color: $color-font-body;
 }
 
 a {

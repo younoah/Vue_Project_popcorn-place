@@ -31,9 +31,9 @@
       </li>
     </ul>
     <div ref="scroll"></div>
-    <Modal v-if="modalStatus" />
-    <Loading v-if="isLoading" />
   </main>
+  <Loading v-if="isLoading" />
+  <Modal v-if="modalStatus" />
 </template>
 
 <script>
