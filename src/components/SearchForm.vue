@@ -27,12 +27,6 @@ export default {
       return this.$store.state.content.contents;
     }
   },
-  mounted() {
-    console.log(this.$route);
-    //   this.keyword = this.$route.path;
-    // if(this.$route.path) {
-    // }
-  },
   methods: {
     async searchContents() {
       await this.$store.dispatch('content/searchContents', {keyword: this.keyword});

@@ -18,7 +18,6 @@ export default {
       Object.keys(payload).forEach(key => {
         state[key] = payload[key];
       });
-      console.log(state);
     },
     toggleModalState(state) {
       state.isShowModal = !state.isShowModal;
