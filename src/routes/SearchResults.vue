@@ -29,6 +29,7 @@
       </figcaption>
     </figure>
   </li>
+  <div ref="scroll"></div>
   <Modal v-if="modalStatus" />
 </template>
 
@@ -50,11 +51,34 @@ export default {
       return this.$store.state.modalStatus;
     }
   },
+  created() {
+    this.observer = new IntersectionObserver(this.observeElement, {
+      root: this.$el,
+      threshold: 0
+    });
+  },
+  mounted() {
+    this.observer.observe(this.$refs.scroll);
+  },
   methods: {
     async showMovieDetails(selectedMovieId) {
       await this.$store.commit('saveSelectedMovieId', selectedMovieId);
       await this.$store.dispatch('fetchSelectedMovieDetails');
       await this.$store.commit('changeModalStatus');
+    },
+    observeElement(entries) {
+      entries.forEach(({ isIntersecting }) => {
+        const isLoading = this.$store.state.isLoading === true;
+        const isResultsEmpty = this.$store.state.results.length === 0;
+
+        if (!isIntersecting || isLoading || isResultsEmpty) {
+          return;
+        }
+
+        this.observer.unobserve(this.$refs.scroll);
+        this.$store.dispatch('fetchNextSearchResults');
+        this.observer.observe(this.$refs.scroll);
+      });
     }
   }
 };
