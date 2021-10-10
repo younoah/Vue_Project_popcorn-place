@@ -129,7 +129,7 @@ export default {
       box-shadow: $BOX_SHADOW;
       border-radius: $BORDER_RADIOUS;
       padding: $BASE_PADDING * 2;
-      width: $XS300_WIDTH;
+      max-width: $XS300_WIDTH;
       min-height: $XS300_HEIGHT;
       text-align: center;
       transition: transform 300ms;
@@ -160,7 +160,8 @@ export default {
         @include flexbox;
         flex-direction: column;
         img {
-          width: $XS300;
+          width: 100%;
+          max-width: $XS300;
           border-radius: $BORDER_RADIOUS;
         }
         img.no-poster {
@@ -168,22 +169,22 @@ export default {
         }
       }
     }
-
-    @include responsive('md') {
-    grid-template-columns: repeat($GRID_COLUMNS_MD, 1fr);
-    }
-
-    @include responsive('lg') {
-    grid-template-columns: repeat($GRID_COLUMNS_LG, 1fr);
-
-    }
   }
-
 }
 
   li {
     border: 1px solid $COLOR_GRAY;
   }
 
-  
+  .search-results {
+    &__list {
+      @include responsive('md') {
+        grid-template-columns: repeat($GRID_COLUMNS_MD, 1fr);
+      }
+
+      @include responsive('lg') {
+        grid-template-columns: repeat($GRID_COLUMNS_LG, 1fr);
+      }
+    }
+  }
 </style>
