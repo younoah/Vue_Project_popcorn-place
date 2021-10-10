@@ -1,6 +1,7 @@
-$color-font: #333;
-$color-background: white;
-$color-background--hover1: darken($color-background, 7%);
-$color-background--hover2: darken($color-background, 14%);
-$color-border: black;
-$color-icon: royalblue;
+$font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+$color-primary: #ef4823;
+$color-secondary: #f4b813;
+$color-header-bg: #fff;
+$shadow-movie-card: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+$shadow-header: 0 3px 12px rgb(0 0 0 / 23%), 0 3px 12px rgb(0 0 0 / 16%);
+$shadow-search: inset 0 1px 2px rgba(black, 0.2);

@@ -1,21 +1,22 @@
 <template>
-  <li class="item">
-    <a class="item__container">
-      <div class="item__thumbnail">
-        <img
-          class="item__img"
-          :src="imgPath"
-          :alt="movie.Title" />
+  <li
+    class="item"
+    tabindex="0">
+    <div
+      class="item__thumbnail">
+      <img
+        class="item__img"
+        :src="imgPath"
+        :alt="movie.Title" />
+    </div>
+    <div class="item__description">
+      <div class="item__title">
+        {{ movie.Title }}
       </div>
-      <div class="item__description">
-        <div class="item__title">
-          {{ movie.Title }}
-        </div>
-        <div class="item__year">
-          {{ movie.Year }}
-        </div>
+      <div class="item__year">
+        {{ movie.Year }}
       </div>
-    </a>
+    </div>
   </li>
 </template>
 
@@ -42,24 +43,34 @@ export default {
 
 <style lang="scss" scoped>
 .item {
-  
+  position: relative;
+  display: block;
+  cursor: pointer;
+  transition: all 0.2s;
 
+  &:hover {
+    transform: scale(1.05);
 
-  &__container {
-    position: relative;
-    display: block;
-    
-    &:hover {
+    .item__title {
+      color: $color-primary;
+    }
 
+    .item__thumbnail::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 
   &__thumbnail {
     background-color: black;
-    height: 300px;
+    height: 400px;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    box-shadow: $shadow-movie-card;
+    position: relative;
   }
 
   &__img {

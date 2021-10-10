@@ -57,7 +57,7 @@ export default {
 
   span {
     font-weight: bold;
-    color: orange;
+    color: $color-secondary;
   }
 }
 </style>

@@ -49,9 +49,9 @@ header {
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
-  background: white;
-  box-shadow: 0 3px 12px rgb(0 0 0 / 23%), 0 3px 12px rgb(0 0 0 / 16%);
-  min-height: 100px;
+  background: $color-header-bg;
+  box-shadow: $shadow-header;
+  height: 100px;
   padding: 0 60px;
   display: flex;
   align-items: center;
@@ -78,18 +78,19 @@ header {
     padding: 10px;
     font-size: 16px;
     color: white;
-    background-color: #f4b813;
+    background-color: $color-secondary;
     border: 1px solid rgba(black, 0.2);
     outline: none;
     border-radius: 5px;
-    box-shadow: inset 0 1px 2px rgba(black, 0.2);
+    box-shadow: $shadow-search;
+    font-family: $font-family;
 
     &::placeholder {
-      color: rgba(white, 0.9);
+      color: rgba(white, 0.7);
     }
 
     &:focus {
-      background-color: #ef4823;
+      background-color: $color-primary;
     }
   }
 }

@@ -23,14 +23,13 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: $font-family;
   font-size: 14px;
   line-height: 1.4;
   
   .app__container {
-    background-color: lightgrey;
     flex-grow: 1;
-    padding: 0 30px;
+    padding: 110px 60px 40px;
   }
 }
 </style>
