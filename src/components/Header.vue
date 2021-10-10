@@ -1,37 +1,96 @@
 <template>
   <header>
     <h1>
-      <a href="/">🎬</a>
+      <a href="/">
+        <img
+          class="img-logo"
+          :src="imgLogo"
+          alt="logo" />
+      </a>
     </h1>
-    <form>
+    <form @submit.prevent>
       <input
         id="search-input"
-        placeholder="검색"
+        :value="keyword"
+        placeholder="영화 제목을 입력해주세요. (영어만 검색 가능)"
         type="text"
-        autocomplete="off" />
+        autocomplete="off"
+        @input="$store.commit('movies/changeKeyword', $event.target.value)" />
     </form>
   </header>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      imgLogo: 'https://user-images.githubusercontent.com/84858773/136695329-9b24dc51-f05b-4fe9-a595-0aa826ce0f15.png',
+    }
+  },
+  computed: {
+    keyword() {
+      return this.$store.state.movies.keyword
+    }
+  },
+  watch: {
+    keyword() {
+      if (this.$store.state.movies.isInit === true) {
+        this.$store.commit('movies/offInitState')
+      }
+      this.$store.dispatch('movies/searchMovies')
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 header {
-  min-height: 120px;
-  padding: 0 30px;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  background: white;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 23%), 0 3px 12px rgb(0 0 0 / 16%);
+  min-height: 100px;
+  padding: 0 60px;
   display: flex;
   align-items: center;
-  text-align: center;
-
-  h1 {
-    position: absolute;
-  }
+  gap: 20px;
 
   a {
-    font-size: 36px;
+    display: block;
+    width: 48px;
     text-decoration: none;
+  }
+
+  .img-logo {
+    width: 100%;
   }
 
   form {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #search-input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #f4b813;
+    border: 1px solid rgba(black, 0.2);
+    outline: none;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(black, 0.2);
+
+    &::placeholder {
+      color: rgba(white, 0.9);
+    }
+
+    &:focus {
+      background-color: #ef4823;
+    }
   }
 }
 </style>

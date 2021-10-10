@@ -2,20 +2,33 @@ export default {
   namespaced: true,
   state() {
     return {
-      movies: []
+      movies: [],
+      isInit: true,
+      keyword: '',
+      suggestKeywords: ['moonlight', 'hidden', 'd\'Amélie', 'harold', 'vertigo', 'billboards', 'daniel', 'arrival', 'ghostbusters', 'spy', 'lady', 'killing', 'you were', 'roma', 'favourite', 'high life', 'the half']
     }
   },
-  getters: {},
+  getters: {
+    initKeyword(state) {
+      return state.suggestKeywords[Math.floor(Math.random() * state.suggestKeywords.length)]
+    }
+  },
   mutations: {
     assignState(state, payload) {
       Object.keys(payload).forEach(key => {
         state[key] = payload[key]
       })
+    },
+    changeKeyword(state, newKeyword) {
+      state.keyword = newKeyword
+    },
+    offInitState(state) {
+      state.isInit = false
     }
   },
   actions: {
-    async searchMovies({ commit }) {
-      const { Search } = await _request()
+    async searchMovies({ state, commit }, payload) {
+      const { Search } = await _request(payload ? payload : state.keyword)
 
       commit('assignState', {
         movies: Search
@@ -24,10 +37,10 @@ export default {
   }
 }
 
-async function _request(url) {
+async function _request(keyword) {
   try {
     // eslint-disable-next-line no-undef
-    const res = await fetch(`${API_ENDPOINT}${url}`)
+    const res = await fetch(`${API_ENDPOINT}&s=${keyword}&page=1`)
 
     if (!res.ok) {
       throw new Error('API 호출 에러')
