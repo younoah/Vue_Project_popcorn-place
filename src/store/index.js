@@ -18,7 +18,11 @@ export default createStore({
   },
   getters: {},
   mutations: {
-    initState(state) {
+    initSearchResults(state) {
+      state.keyword = '';
+      state.results = [];
+    },
+    changeSearchResults(state) {
       state.pageNumber = 0;
       state.results = [];
     },
@@ -63,7 +67,7 @@ export default createStore({
         }
       });
 
-      await commit('initState');
+      await commit('changeSearchResults');
       await commit('changeLoadingStatus');
       await commit('increasePageNumber');
 

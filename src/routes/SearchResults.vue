@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main :key="$route.params.keyword" class="main">
     <div v-if="keyword" class="main__guidance">
       Here's the result of searching for "{{ keyword }}"
     </div>

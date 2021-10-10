@@ -4,7 +4,7 @@
       <button type="button" class="header__menu">
         <span class="material-icons"> menu </span>
       </button>
-      <router-link to="/" class="header__link">
+      <router-link to="/" class="header__link" @click="goHomePage">
         <h1 class="header__title">Cinephile</h1>
       </router-link>
       <div class="header__description">All the movies you're looking for.</div>
@@ -15,6 +15,16 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  methods: {
+    goHomePage() {
+      this.$store.commit('initSearchResults');
+    }
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .header {
