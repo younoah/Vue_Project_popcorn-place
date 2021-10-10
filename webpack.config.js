@@ -29,7 +29,22 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ['vue-style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `
+              @use "sass:color";
+              @import "~/scss/_mixins";
+              @import "~/scss/_types";
+              @import "~/scss/_variables";
+            `
+            }
+          }
+        ]
       }
     ]
   },
