@@ -207,18 +207,21 @@ export default {
 
 <style lang="scss" scoped>
 .detail {
+  position: relative;
   @include flexbox;
-  height: calc(100vh - $HEADER_HEIGHT);
   min-height: $XS300_HEIGHT;
 
   &__card {
+    position: absolute;
+    top: 0;
     @include flexbox;
     flex-direction: column;
     width: 100%;
-    height: $XS300_HEIGHT;
+    min-height: $XS300_HEIGHT;
     background-color: $COLOR_WHITE;
 
     &-title {
+      text-align: center;
       font-size: 20px;
       font-weight: 700;
       color: $COLOR_RED;
@@ -232,11 +235,13 @@ export default {
   }
 
   &__content {
-    @include flexbox;
+    display: grid;
+    grid-template-columns: #{$GRID_COLUMNS_SM}fr;
+    justify-items: center;
+    align-content: center;
+    max-width: $DETAIL_WIDTH;
     padding: $BASE_PADDING;
     box-shadow: $BOX_SHADOW;
-
-    
 
     &-infos {
       li {
@@ -249,11 +254,12 @@ export default {
       }
       .info {
         display: grid;
-        grid-template-columns: 1fr 6fr;
+        grid-template-columns: 2fr 6fr;
 
         &-title {
           padding-right: $BASE_PADDING * 2;
           font-weight: 700;
+          min-width: 100px;
         }
 
         &-content {
@@ -275,7 +281,7 @@ export default {
       }
     }
   }
-}
+
   .poster {
     padding-right: $BASE_PADDING * 3;
 
@@ -301,6 +307,20 @@ export default {
       box-shadow: $BOX_SHADOW;
     }
   }
-
+}
   
+
+  @include responsive('md') {
+    .detail {
+      height: calc(100vh - $HEADER_HEIGHT);
+
+      &__card {
+        position: static;
+      }
+
+      &__content {
+        grid-template-columns: #{$GRID_COLUMNS_SM}fr #{$GRID_COLUMNS_MD}fr;
+      }
+    }
+  }
 </style>
