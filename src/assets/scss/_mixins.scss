@@ -1,0 +1,92 @@
+@import "./variables";
+
+@mixin nav-margin-bottom {
+    nav {
+        margin-bottom: $my-size;
+    }
+}
+
+@mixin my-margin-bottom($size: $my-size) {
+    margin-bottom: $size;
+}
+
+@mixin my-margin-left($size: $my-size-sm) {
+    margin-left: $size;
+}
+
+@mixin search-form-fadein() {
+  .search-form {
+    animation: fadein 3s;
+  }
+  @keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+}
+
+@mixin title-fadein() {
+  h1 {
+    @include my-margin-bottom;
+    animation: fadein 3s;
+  }
+
+  @keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+}
+
+@mixin my-flex-list() {
+    .inner {
+        text-align: center;
+      
+        img {
+        width: 288;
+        height: 420px;
+        @include my-margin-bottom(8px);
+        }
+      
+        ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        min-height: 100vh;
+        padding: 0;
+        }
+      
+        h2 {
+        overflow: hidden;
+        font-size: $my-h2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin: 0;
+      
+          span {
+            color: $my-gray;
+            font-size: $my-font-size;
+          }
+        }
+      
+        .list-container {
+          width: 100%;
+          padding: 0 auto;
+        }
+      
+        .card {
+          width: 322px;
+          height: 488px;
+          padding: 10px;
+          margin: 10px;
+          text-align: center;
+        }
+    }
+}
