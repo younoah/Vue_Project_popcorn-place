@@ -1,7 +1,7 @@
 <template>
   <div class="list-header">
     <h1>
-      Movie list
+      🎬 Movie list 
     </h1>
     <div
       v-if="$store.state.movie.isLoading"
@@ -11,31 +11,33 @@
       <div
         v-if="!isLoading&&!totalresult"
         class="movie-result">
-        검색된 영화가 없습니다. 다시 입력해주세요
+        검색된 영화가 없습니다. 다시 입력해주세요.
       </div>
-      <div v-else>
+      <div
+        v-else 
+        class="movie-rusult-find">
         찾은 영화 수: {{ CurrentMovieCount }}/{{ totalresult }}
         <div class="nav-page">
           <button
             class="nav-page-prev"
             @click.prevent="onPrevPages"
             @click="$router.push({name:'Movie'})">
-            prev
+            ◀prev
           </button>
           <button
             class="nav-page-next" 
             @click.prevent="onNextPages"
             @click="$router.push({name:'Movie'})">
-            next
+            next▶
           </button>
         </div>
       </div>
     </div>
 
     <button
-      class="movie-moreinfo"
+      class="movie-movehome"
       @click="$router.push({name:'Home'})">
-      Home 🏠
+      메인화면으로 🏠
     </button>
   </div>
   <div class="movie-result">
@@ -56,7 +58,7 @@
             params:{
               id:i.imdbID
             }})">
-          영화 정보 상세보기
+          ↪🔍
         </button>
       </li>
     </ul>
@@ -122,24 +124,98 @@ computed:{
 }
 </script>
 <style lang="scss" scoped>
+h1{
+  padding-top:20px;
+  margin:0px;
+  color:white;
+  border-bottom: solid white;
+}
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid gray; /* Light grey */
+  border-top: 16px solid white; /* Blue */
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+  align-content: center;
+  justify-items: center;
+  text-justify: center;
+
+}
+.movie-result{
+  font-size:30px;
+  color:white;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.movie-rusult-find{
+  font-size:20px;
+  color:white;
+  padding:10px;
+  .nav-page{
+    .nav-page-prev{
+      font-size:20px;
+      border:none;
+      background-color: black;
+      color: white;
+        &:hover{
+          color:red;
+        }
+    }
+      .nav-page-next{
+      margin-left:20px;
+      font-size:20px;
+      border:none;
+      background-color: black;
+      color: white;
+        &:hover{
+          color:red;
+        }
+    }
+
+  }
+  
+}
+.movie-movehome{
+  margin-left:10px;
+  font-size:20px;
+  border:none;
+  background-color: black;
+  color: white;
+    &:hover{
+      color:royalblue;
+    }
+}
 .movie-result-list{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-template-columns: repeat(5,1fr);
+  gap:3px;
+  margin-top:20px;
+  padding-inline: 100px;
   li{
     margin:10px;
+    text-align: right;
+    .movie-result-poster{
+      width: 100%;
+      height: 350px;
+    }
+    .movie-result-moreinfobutton{
+      font-size:30px;
+      border:none;
+
+      background-color: black;
+      color: white;
+        &:hover{
+          border-bottom:solid blue;
+          color:blue;
+        }
+    }
   }
   
 }

@@ -25,9 +25,9 @@
     </li>
   </ul>
   <button
-    class="movie-moreinfo"
+    class="movie-moreinfo-prev"
     @click="$router.push({name:'Movie'})">
-    뒤로가기
+    ◀뒤로가기
   </button>
 </template>
 
@@ -52,6 +52,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.header{
+    color:white;
+    padding-top: 10px;
+    padding-left: 40px;
+    margin:0px
+}
 .movie-moreinfo-li{
     display: flex;
     
@@ -59,7 +65,19 @@ export default {
         margin-right: 30px;
     }
     .movie-moreinfo-detail{
-        padding:10px
+        padding:10px;
+        color:white;
+    }
+}
+.movie-moreinfo-prev{
+
+  margin-left:30px;
+  font-size:20px;
+  border:none;
+  background-color: black;
+  color: white;
+    &:hover{
+      color:royalblue;
     }
 }
 </style>

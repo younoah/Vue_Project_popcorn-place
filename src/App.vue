@@ -1,10 +1,10 @@
 <template>
   <div class="app_inner">
-    <div class="app_page">
+    <div class="app_header">
       <Header />
-      <div class="movieresult_container">
-        <RouterView />
-      </div>
+    </div>
+    <div class="movieresult_container">
+      <RouterView />
     </div>
   </div>
 </template>
@@ -41,7 +41,8 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-body{
-background-color: black;
+.movieresult_container{
+  height:130vh;
+  background-color: black;
 }
 </style>

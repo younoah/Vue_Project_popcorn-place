@@ -1,8 +1,10 @@
 <template>
   <header>
-    <div class="welcom">
-      🍿 반갑습니다 고객님 🍿 
-    </div>
+    <button 
+      class="welcom"
+      @click="$router.push({name:'Home'})">
+      🍿 주영 시네마 🍿 
+    </button>
     <form 
       class="movie-search"
       @submit.prevent="searchMovies"
@@ -49,27 +51,43 @@ header {
     margin:0;
     background-color: #F73E3E;
     .welcom{
+      border:none;
+      background-color: #F73E3E;
+      font-size:30px;
       margin-bottom: 20px;
-      color:azure
+      color:white;
+      &:hover{
+          color:lightcoral;
+      }
     }
     .movie-search {
       display: flex;
 
       .movie-search-input {
         width: 500px;
+        border-right:none;
         border: none;
         border-radius: 0.1rem;
+        background-color: white;
+        &::placeholder{
+        color: black ;
+    }
+
     }
       .movie-search-submit {
+        height: 509px;
+        background-color: white;
         display: flex;
         justify-content: center;
         cursor: pointer;
         height: 35px;
         min-width: 60px;
-        border: 1px solid lightgray;
-        border-left: none;
+        border: none;
         border-radius: 0.1rem;
         padding: 8px;
+        &:hover{
+          background-color:lightcoral;
+        }
       }
     }
 }
