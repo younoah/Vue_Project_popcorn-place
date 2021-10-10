@@ -86,13 +86,13 @@ const useMovieData = () => {
     state.search.loading = true;
     state.search.error = null;
     try {
-      const searchResponse = await MovieService.getSearchResult(term, page);
+      const { data } = await MovieService.getSearchResult(term, page);
 
       state.search.data =
-        searchResponse.Response === "True"
+        data.Response === "True"
           ? validSuggestionsData(
-              state.search.data.value.concat(searchResponse.Search),
-              searchResponse.totalResults
+              state.search.data.value.concat(data.Search),
+              data.totalResults
             )
           : notFoundData();
     } catch (e) {
@@ -156,11 +156,11 @@ const useMovieData = () => {
     state.detail.error = null;
 
     try {
-      const detailResponse = await MovieService.getMovieDetail(imdbID);
+      const { data } = await MovieService.getMovieDetail(imdbID);
 
       state.detail.data =
-        detailResponse.Response === "True"
-          ? validDetailData([omit(detailResponse, "Response")])
+        data.Response === "True"
+          ? validDetailData([omit(data, "Response")])
           : notFoundData();
     } catch (e) {
       state.detail.error = e as Error;
