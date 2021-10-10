@@ -2,12 +2,11 @@
   <header class="header">
     <div class="header__home">
       <input  
+        v-model="title"
         type="text"
         placeholder="영화 제목 / 관련 키워드 입력"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        @keyup.enter="$emit('search')" />
-      <button @click="$emit('search')">
+        @keyup.enter="getMovieList" />
+      <button @click="getMovieList">
         찾기
       </button>
     </div>
@@ -16,13 +15,32 @@
 
 <script>
 export default {
-  props: {
-    modelValue: {
-      type: String,
-      default: ''
-    }
+  computed: {
+    options() {
+      return {
+        title: this.$store.state.title,
+        page: this.$store.state.page
+      };
+    },
+    title: {
+      get() {
+        return this.$store.state.title;
+      },
+      set(value) {
+        this.$store.commit('updateTitle', value);
+      }
+    },
   },
-  emits: ['update:modelValue', 'search'], 
+  methods: {
+    updateTitle(e) {
+      this.$store.commit('updateTitle', e.target.value);
+    },
+    async getMovieList() {
+      this.$store.commit('resetPage');
+      await this.$store.dispatch('getMovieList',this.options);
+     }
+
+  } 
 };
 </script>
 

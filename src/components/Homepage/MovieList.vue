@@ -2,10 +2,9 @@
   <main class="main">
     <ul class="main__movie-list">
       <li
-        v-for="movie in movies"
+        v-for="movie in movieList"
         :key="movie.imdbID"
-        class="item"
-        @click="click(movie.imdbID)">
+        class="item">
         <RouterLink
           :to="routePath(movie.imdbID)">
           <img
@@ -25,22 +24,16 @@
 
 <script>
 export default {
-    props:{
-        movies: {
-            type: Array,
-            default: () => ([])
-        }
-    },
-    computed: {
-
-    },
-    methods: {
-        routePath(id) {
-            return `/movie/info/${id}`;
-        },
-        click() {
-        }
-    }
+  computed: {
+    movieList() {
+      return this.$store.state.movieList;
+      }
+  },
+  methods: {
+      routePath(id) {
+          return `/movie/info/${id}`;
+      }
+  }
 };
 </script>
 
