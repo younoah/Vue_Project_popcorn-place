@@ -18,27 +18,32 @@
             class="search-result__image"
           />
 
-      <img
-        v-else
-        :src="result.Poster"
-        :alt="result.Title"
-        class="search-result__image"
-      />
-      <figcaption class="search-result__title">
-        {{ result.Title }}
-      </figcaption>
-    </figure>
-  </li>
-  <div ref="scroll"></div>
-  <Modal v-if="modalStatus" />
+          <img
+            v-else
+            :src="result.Poster"
+            :alt="result.Title"
+            class="search-result__image"
+          />
+          <figcaption class="search-result__title">
+            {{ result.Title }}
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+    <div ref="scroll"></div>
+    <Modal v-if="modalStatus" />
+    <Loading v-if="isLoading" />
+  </main>
 </template>
 
 <script>
 import Modal from '~/components/Modal';
+import Loading from '~/components/Loading';
 
 export default {
   components: {
-    Modal
+    Modal,
+    Loading
   },
   computed: {
     keyword() {
@@ -49,6 +54,9 @@ export default {
     },
     modalStatus() {
       return this.$store.state.modalStatus;
+    },
+    isLoading() {
+      return this.$store.state.isLoading;
     }
   },
   created() {
