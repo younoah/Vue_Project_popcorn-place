@@ -25,6 +25,7 @@
     />
   </ul>
 </template>
+
 <style lang="scss" scoped>
 .movie-search-list {
   position: absolute;

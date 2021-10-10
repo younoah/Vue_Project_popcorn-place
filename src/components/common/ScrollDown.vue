@@ -6,6 +6,7 @@
     </svg>
   </div>
 </template>
+
 <style lang="scss" scoped>
 .scroll-down {
   width: 30px;

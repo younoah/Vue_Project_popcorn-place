@@ -50,6 +50,7 @@
     />
   </div>
 </template>
+
 <style lang="scss" scoped>
 .movie-detail-card {
   max-width: 72rem;
@@ -148,6 +149,7 @@
   }
 }
 </style>
+
 <script lang="ts">
 import { useMovieData } from "@/composables";
 import { defineComponent, ref } from "vue";

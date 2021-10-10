@@ -25,6 +25,7 @@
     </div>
   </li>
 </template>
+
 <style lang="scss" scoped>
 .movie-search-list-item {
   position: relative;

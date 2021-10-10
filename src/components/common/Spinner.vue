@@ -4,21 +4,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import { useUniqueKey } from "@/composables";
-
-const COMPONENT_NAME = "spinner";
-
-export default defineComponent({
-  name: COMPONENT_NAME,
-  setup() {
-    const spinnerKey = useUniqueKey(COMPONENT_NAME);
-
-    return { spinnerKey };
-  },
-});
-</script>
 <style lang="scss" scoped>
 .spinner {
   position: relative;
@@ -61,3 +46,19 @@ export default defineComponent({
   }
 }
 </style>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useUniqueKey } from "@/composables";
+
+const COMPONENT_NAME = "spinner";
+
+export default defineComponent({
+  name: COMPONENT_NAME,
+  setup() {
+    const spinnerKey = useUniqueKey(COMPONENT_NAME);
+
+    return { spinnerKey };
+  },
+});
+</script>

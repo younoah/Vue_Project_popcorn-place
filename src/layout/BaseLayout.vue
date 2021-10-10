@@ -6,6 +6,7 @@
     <slot name="main" />
   </main>
 </template>
+
 <style lang="scss" scoped>
 .header,
 .main {

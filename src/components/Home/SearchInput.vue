@@ -11,6 +11,29 @@
   />
 </template>
 
+<style lang="scss" scoped>
+input {
+  @include typography.font-style(20, white);
+
+  width: 100%;
+  height: 4.8rem;
+  padding: 2%;
+  vertical-align: middle;
+  background: transparent;
+  border: 0.2rem solid colors.$brand-light;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 300ms ease-in-out;
+
+  &:focus {
+    color: colors.$brand-dark;
+    background: white;
+    outline: none;
+    box-shadow: 1px 1px 2px 2px colors.$brand-light;
+  }
+}
+</style>
+
 <script lang="ts">
 import { useMovieData, useDebounceRef } from "@/composables";
 import { defineComponent, PropType, watch } from "vue";
@@ -50,25 +73,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-input {
-  @include typography.font-style(20, white);
-
-  width: 100%;
-  height: 4.8rem;
-  padding: 2%;
-  vertical-align: middle;
-  background: transparent;
-  border: 0.2rem solid colors.$brand-light;
-  border-radius: 0.6rem;
-  box-shadow: 0 0 0 0 transparent;
-  transition: all 300ms ease-in-out;
-
-  &:focus {
-    color: colors.$brand-dark;
-    background: white;
-    outline: none;
-    box-shadow: 1px 1px 2px 2px colors.$brand-light;
-  }
-}
-</style>

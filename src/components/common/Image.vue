@@ -7,6 +7,7 @@
     @error="onError"
   />
 </template>
+
 <style lang="scss" scoped>
 .image {
   width: 100%;
@@ -14,6 +15,7 @@
   object-fit: contain;
 }
 </style>
+
 <script lang="ts">
 import { defineComponent, PropType, ref } from "vue";
 import fallbackImg from "@/assets/logo.png";

@@ -17,6 +17,41 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.combo-box {
+  width: 72rem;
+
+  h1 {
+    @include typography.font-style(24, colors.$brand-light);
+  }
+
+  &__label {
+    @include typography.font-style(16);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 1.5rem;
+  }
+
+  &__contents {
+    position: relative;
+    width: 100%;
+  }
+
+  &__controls {
+    display: flex;
+
+    :deep(.spinner) {
+      position: absolute;
+      top: -1.6rem;
+      right: -1.6rem;
+      transform: scale(0.3);
+    }
+  }
+}
+</style>
+
 <script lang="ts">
 import { computed, defineComponent, reactive } from "vue";
 import MovieSearchList from "@/components/Home/MovieSearchList.vue";
@@ -59,38 +94,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.combo-box {
-  width: 72rem;
-
-  h1 {
-    @include typography.font-style(24, colors.$brand-light);
-  }
-
-  &__label {
-    @include typography.font-style(16);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 0 1.5rem;
-  }
-
-  &__contents {
-    position: relative;
-    width: 100%;
-  }
-
-  &__controls {
-    display: flex;
-
-    :deep(.spinner) {
-      position: absolute;
-      top: -1.6rem;
-      right: -1.6rem;
-      transform: scale(0.3);
-    }
-  }
-}
-</style>
