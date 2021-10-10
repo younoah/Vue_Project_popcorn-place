@@ -1,12 +1,7 @@
 <template>
-  <div class="search-results">
-    <h1 class="found-results">
-      <u>{{ $route.params.keyword }}</u>&nbsp;
-      <strong> 검색 결과 {{ totalResults }}개</strong>중에&nbsp;
-      <strong>{{ searchResults.length }}개</strong>를 불러왔어요!
-      👏👏👏
-    </h1>
-    <RouterView />
+  <div class="search-results__wrapper">
+    <FoundResults searchResults="searchResults"/>
+    <div class="search-results">
     <ul
       class="search-results__list">
       <li
@@ -47,15 +42,23 @@
         ref="scrollObserver"
         class="scroll-observer"></div>
     </ul>
+    </div>
+    <Loading />
   </div>
 </template>
 
 <script>
+import FoundResults from '~/components/SearchResults/FoundResults'
+import Loading from '~/components/Loading'
+
 export default {
+  components: {
+    FoundResults,
+    // Loading
+  },
   data() {
     return {
       page: 0,
-      
     }
   },
   computed: {
@@ -64,11 +67,11 @@ export default {
     },
     totalResults() {
       return this.$store.state.searchResult.totalResults
-    }
+    },
   },
   mounted() {
-    this.initIntersectionObserver()
-    // mounted 됐을 때 observer 호출
+      this.initIntersectionObserver()
+      // mounted 됐을 때 observer 호출
   },
   methods: {
     async getMoreArticles() {
@@ -97,7 +100,7 @@ export default {
     async submit(e) {
       const [ _, id ] = e.target.closest('li').className.split(' ')
       this.$router.push({ name: 'Detail', params: { id } })
-    }
+    },
   }
 }
 </script>
@@ -110,22 +113,6 @@ export default {
 
 .search-results {
   position: relative;
-
-  .found-results {
-    @include flexbox;
-    position: fixed;
-    top: $HEADER_HEIGHT - 1;
-    font-size: 1.2em;
-    width: 100%;
-    height: $HEADER_HEIGHT;
-    background-color: rgba($COLOR_WHITE, $BASE_OPACITY);
-    backdrop-filter: blur(8px);
-    z-index: $HEADER_INDEX;
-
-    strong {
-      font-weight: 700;
-    }
-  }
 
   &__list {
     display: grid;
