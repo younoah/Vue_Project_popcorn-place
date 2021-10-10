@@ -1,0 +1,12 @@
+[build]
+  command = "yarn run build"
+  functions = "functions"
+  publish = "dist"
+
+[dev]
+  framework = "#custom"
+  command = "yarn serve"
+  targetPort = 8079
+  port = 8080
+  publish = "dist"
+  autoLaunch = false
