@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "warn",
+    "vue/html-closing-bracket-newline": ["warn", {
+      "singleline": "never",
+      "multiline": "always"
+    }],
+    "vue/no-multiple-template-root": "off",
+    "vue/html-self-closing": ["warn", {
+      "html": {
+        "void": "always",
+        "normal": "never",
+        "component": "always"
+      },
+      "svg": "always",
+      "math": "always"
+    }]
+  }
+}
