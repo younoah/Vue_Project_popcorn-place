@@ -2,7 +2,7 @@
   <header>
     <img
       class="logo"
-      src="https://user-images.githubusercontent.com/66211721/136692998-a4b5009a-9ab0-4640-a762-4001ce3d90ed.png"
+      src="https://user-images.githubusercontent.com/66211721/136697010-60b0f85b-8d48-4dc0-b521-1abbe5cdcd8d.png"
       alt="logo" 
       @click="$router.push({name:'Home'})" />
     <form

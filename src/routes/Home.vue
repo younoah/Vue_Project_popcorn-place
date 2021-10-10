@@ -13,7 +13,7 @@
           target="_blank">
           <img
             src="https://img.megabox.co.kr/static/pc/images/common/ci/logo-white_new2.png"
-            alt="하이" />
+            alt="megabox" />
         </a>
       </div>
       <div class="Home-reserve-lotte">
@@ -22,7 +22,7 @@
           target="_blank">
           <img
             src="https://www.lottecinema.co.kr/NLCHS/Content/images/common/logo_wht.png"
-            alt="하이" />
+            alt="lottecinema" />
         </a>
       </div>
       <div class="Home-reserve-cgv">
@@ -31,7 +31,7 @@
           target="_blank">
           <img
             src="https://img.cgv.co.kr/R2014/images/title/h1_cgv.png"
-            alt="하이" />
+            alt="cgv" />
         </a>
       </div>
     </div>
