@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
-import message from './message'
+import movie from './movie'
 
 export default createStore({
   modules: {
-    message
+    movie
   }
 })
