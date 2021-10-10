@@ -177,11 +177,11 @@ export default {
       return this.$store.state.searchResult.currentResult
     },
     isLoading() {
-      return this.$store.state.searchResult.isLoading
+      this.$store.getters['searchResult/isLoading']
     }
   },
   created() {
-    this.initCurrentResult()
+      this.initCurrentResult()
   },
   methods: {
     async initCurrentResult() {

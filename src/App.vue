@@ -4,14 +4,18 @@
     <div class="content">
       <RouterView />
     </div>
+    <Loading />
   </div>
 </template>
 
 <script>
 import Header from '~/components/Header'
+import Loading from '~/components/Loading'
+
 export default {
   components: {
-    Header
+    Header,
+    Loading
   }
 }
 </script>
