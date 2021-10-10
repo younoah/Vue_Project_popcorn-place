@@ -1,0 +1,27 @@
+{
+    "env": {
+        "browser": true, // 규칙에 브라우저 객체를 포함함.
+        "node": true // 규칙에 노드 객체를 포함함.
+    },
+    "extends": [
+        "eslint:recommended", // eslint 추천 규칙을 따름.
+        "plugin:vue/vue3-recommended" //plugin Vue lint 규칙을 따름.
+    ],
+    "rules": {
+        "semi": ["error", "never"], // 세미콜론 옵션
+        "quotes":["error", "single"], //문자열 작은따옴표 옵션
+        "vue/html-closing-bracket-newline": ["error", { // 커스텀 옵션1
+            "singleline": "never",
+            "multiline": "never"
+          }],
+          "vue/html-self-closing": ["error", { // 커스텀 옵션2
+            "html": {
+              "void": "always", //img 태그 같은거
+              "normal": "never", //div 태그 같은거
+              "component": "always"
+            },
+            "svg": "always",
+            "math": "always"
+          }]  
+    }
+}
