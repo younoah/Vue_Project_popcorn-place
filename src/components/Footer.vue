@@ -10,4 +10,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.footer {
+  height: 24px;
+  color: lightgrey;
+  margin: 48px 0;
+}
+</style>
