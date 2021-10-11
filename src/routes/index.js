@@ -14,7 +14,7 @@ export default createRouter({
     // {
     //   path: '/movies',
     //   name: 'movies',
-    //   component: SearchResult,
+    //   component: MovieDetail,
     //   // children: [
     //   //   {
     //   //     path: ':id',

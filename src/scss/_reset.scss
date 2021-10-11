@@ -1,20 +1,10 @@
 * {
   box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  // font-family: 'Roboto', sans-serif;
 }
 
-a:link {
-  text-decoration: none;
-  color: inherit;
-}
-a:visited {
-  text-decoration: none;
-  color: inherit;
-}
-a:active {
-  text-decoration: none;
-  color: inherit;
-}
-a:hover {
+a {
   text-decoration: none;
   color: inherit;
 }

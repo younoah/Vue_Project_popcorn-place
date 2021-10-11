@@ -22,9 +22,5 @@ export default {
     font-family: 'Roboto';
     font-weight: bold;
   }
-  em,
-  span {
-    color: royalblue;
-  }
 }
 </style>

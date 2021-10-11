@@ -1,5 +1,5 @@
 <template>
-  <form action="" class="searchbar">
+  <form class="searchbar" @submit.prevent>
     <input
       v-model.trim="searchKeyword"
       type="text"
@@ -21,8 +21,10 @@ export default {
     };
   },
   methods: {
-    searchMovie() {
-      console.log('searchMovie!');
+    async searchMovie() {
+      console.log('searchMovie!', this.searchKeyword);
+      await this.$store.dispatch('getMovies', { keyword: this.searchKeyword });
+      console.log(this.$store.movies);
     },
   },
 };
@@ -35,7 +37,7 @@ export default {
   box-shadow: 0px 0.5rem 1.25rem rgb(0 0 0 / 16%);
   &__input {
     font-size: 18px;
-    width: 400px;
+    width: 50vw;
     height: 44px;
     padding: 10px;
     border: none;
