@@ -1,6 +1,6 @@
 <template>
   <h1 class="logo">
-    <a href="/"><em>POPCORN</em><span>PLACE</span></a>
+    <a href="/"><span>🍿</span><em>POPCORN</em></a>
   </h1>
 </template>
 
@@ -15,10 +15,12 @@ export default {
 <style lang="scss" scoped>
 .logo {
   a {
-    text-decoration: none;
+    // text-decoration: none;
     display: flex;
-    gap: 20px;
-    font-size: 50px;
+    gap: 12px;
+    font-size: 56px;
+    font-family: 'Roboto';
+    font-weight: bold;
   }
   em,
   span {

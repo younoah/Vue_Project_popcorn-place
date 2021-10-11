@@ -24,7 +24,10 @@ export default {
 .continer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+
+  .header {
+    margin-top: 50px;
+  }
 }
 </style>
