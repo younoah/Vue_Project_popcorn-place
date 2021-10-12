@@ -31,8 +31,8 @@ export default {
   align-items: center;
 }
 .spinner-border {
-  width: 10vw;
-  height: 10vw;
-  font-size: 5vw;
+  width: 4vw;
+  height: 4vw;
+  font-size: 2vw;
 }
 </style>

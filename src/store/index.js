@@ -23,12 +23,28 @@ export default createStore({
     async getMovies({ state, commit }, payload) {
       const { keyword, pageNumber = 1 } = payload;
       const result = await API.getMovies(keyword, pageNumber);
+      if (!result.Search) {
+        commit('assignState', {
+          movies: [],
+          keyword,
+        });
+      } else {
+        const movies = result.Search;
+        commit('assignState', {
+          movies,
+          keyword,
+        });
+      }
+      console.log('결과', state.movies);
+    },
+    async getMoreMovies({ state, commit }, payload) {
+      const { keyword, pageNumber = 1 } = payload;
+      const result = await API.getMovies(keyword, pageNumber);
       const movies = result.Search;
       commit('assignState', {
-        movies,
+        movies: [...state.movies, ...movies],
         keyword,
       });
-      console.log('결과', state.movies);
     },
     async getMovieDetail({ state, commit }, id) {
       console.log('getMovieDetail!');

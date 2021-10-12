@@ -1,9 +1,11 @@
 <template>
   <main class="content">
     <h2 v-if="movies.length > 0" class="content__guidance">
-      '{{ this.$store.state.keyword }}'의 검색결과
+      '{{ this.$store.state.keyword }}'의 검색 결과
     </h2>
-    <h2 v-else class="content__guidance">검색결과가 없습니다.</h2>
+    <h2 v-else class="content__guidance">
+      '{{ this.$store.state.keyword }}'의 검색 결과가 없습니다.
+    </h2>
     <ul class="content__search-result">
       <MovieItem
         v-for="movie in movies"
@@ -12,7 +14,7 @@
         class="search-result__item"
       />
     </ul>
-    <button class="content__button">더보기</button>
+    <button @click="onLoadMore" class="content__button">더보기</button>
   </main>
 </template>
 
@@ -20,12 +22,27 @@
 import MovieItem from './MovieItem';
 
 export default {
+  data() {
+    return {
+      totalResults: null,
+      pageNumber: 1,
+    };
+  },
   components: {
     MovieItem,
   },
   computed: {
     movies() {
       return this.$store.state.movies;
+    },
+  },
+  methods: {
+    async onLoadMore() {
+      this.pageNumber++;
+      await this.$store.dispatch('getMoreMovies', {
+        keyword: this.$store.state.keyword,
+        pageNumber: this.pageNumber,
+      });
     },
   },
 };
@@ -36,7 +53,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
   &__guidance {
     display: flex;
@@ -63,7 +80,6 @@ export default {
     }
 
     &__guidance {
-      padding-top: 6rem;
       font-size: $size-font-md;
     }
   }
@@ -76,7 +92,6 @@ export default {
     }
 
     &__guidance {
-      padding-top: 6rem;
       font-size: $size-font-lg;
     }
   }

@@ -39,8 +39,8 @@ export default {
   box-shadow: 0px 0.5rem 1.25rem rgb(0 0 0 / 16%);
   &__input {
     font-size: 18px;
-    width: 50vw;
-    height: 44px;
+    width: 60vw;
+    height: 48px;
     padding: 10px;
     border: none;
     &:focus {
@@ -51,6 +51,22 @@ export default {
     background: none;
     border: none;
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: $breakpoint-xl) and (min-width: $breakpoint-2xl - 1px) {
+  .searchbar {
+    &__input {
+      width: 33vw;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-2xl) {
+  .searchbar {
+    &__input {
+      width: 20vw;
+    }
   }
 }
 </style>

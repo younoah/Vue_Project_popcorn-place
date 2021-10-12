@@ -10,8 +10,6 @@
           <dd>{{ currentMovie.Title }}</dd>
           <dt class="modal__content__title">📅 개봉일</dt>
           <dd>{{ currentMovie.Released }}</dd>
-          <dt class="modal__content__title">🔢 등급</dt>
-          <dd>{{ currentMovie.Rated }}</dd>
           <dt class="modal__content__title">✅ 장르</dt>
           <dd>{{ currentMovie.Genre }}</dd>
           <dt class="modal__content__title">🎬 감독</dt>
@@ -58,8 +56,10 @@ export default {
   justify-content: center;
   align-items: center;
   &__inner {
+    max-width: 80vw;
+    max-height: 60vh;
     background-color: white;
-    padding: 20px;
+    padding: 32px;
     display: flex;
     gap: 2rem;
     border-radius: 1rem;
@@ -68,8 +68,18 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow: auto;
     dt {
       width: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-lg) {
+  .modal {
+    &__inner {
+      flex-direction: column;
+      align-items: center;
     }
   }
 }
