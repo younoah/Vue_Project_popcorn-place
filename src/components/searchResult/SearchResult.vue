@@ -14,7 +14,13 @@
         class="search-result__item"
       />
     </ul>
-    <button @click="onLoadMore" class="content__button">더보기</button>
+    <button @click="onLoadMore" class="content__button">
+      <img
+        src="../../assets/icon_more.png"
+        alt="더보기"
+        class="content__button__img"
+      />
+    </button>
   </main>
 </template>
 
@@ -69,7 +75,18 @@ export default {
     grid-column-gap: 16px;
   }
   &__button {
+    height: 36px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &__img {
+      width: 32px;
+      height: 32px;
+      &:hover {
+        width: 36px;
+        height: 36px;
+      }
+    }
   }
 }
 
