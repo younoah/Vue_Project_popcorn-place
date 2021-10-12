@@ -4,6 +4,7 @@
     <SearchResults class="content" />
     <Footer class="footer" />
     <MovieDetailModal />
+    <Spinner />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Header from '~/components/header/Header';
 import SearchResults from '~/components/searchResult/SearchResult';
 import Footer from '~/components/footer/Footer';
 import MovieDetailModal from '~/components/movieDetail/MovieDetailModal';
+import Spinner from '~/components/common/Spinner';
 
 export default {
   components: {
@@ -19,6 +21,7 @@ export default {
     SearchResults,
     Footer,
     MovieDetailModal,
+    Spinner,
   },
 };
 </script>

@@ -4,9 +4,11 @@ import { API } from '~/api';
 export default createStore({
   state: () => {
     return {
+      keyword: '',
       movies: [],
       currentMovie: {},
       isShowModal: false,
+      isLoading: false,
     };
   },
   getters: {},
@@ -24,6 +26,7 @@ export default createStore({
       const movies = result.Search;
       commit('assignState', {
         movies,
+        keyword,
       });
       console.log('결과', state.movies);
     },

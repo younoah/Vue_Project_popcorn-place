@@ -22,9 +22,11 @@ export default {
   },
   methods: {
     async searchMovie() {
+      if (!this.searchKeyword) return;
       console.log('searchMovie!', this.searchKeyword);
+      this.$store.commit('assignState', { isLoading: true });
       await this.$store.dispatch('getMovies', { keyword: this.searchKeyword });
-      console.log(this.$store.movies);
+      this.$store.commit('assignState', { isLoading: false });
     },
   },
 };

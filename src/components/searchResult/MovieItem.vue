@@ -28,8 +28,10 @@ export default {
   },
   methods: {
     async openModal(event) {
+      this.$store.commit('assignState', { isLoading: true });
       await this.$store.dispatch('getMovieDetail', this.movie.imdbID);
       await this.$store.commit('assignState', { isShowModal: true });
+      this.$store.commit('assignState', { isLoading: false });
     },
   },
 };

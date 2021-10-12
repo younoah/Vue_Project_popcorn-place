@@ -1,6 +1,8 @@
 <template>
   <main class="content">
-    <h2 v-if="movies.length > 0" class="content__guidance">검색결과</h2>
+    <h2 v-if="movies.length > 0" class="content__guidance">
+      '{{ this.$store.state.keyword }}'의 검색결과
+    </h2>
     <h2 v-else class="content__guidance">검색결과가 없습니다.</h2>
     <ul class="content__search-result">
       <MovieItem
