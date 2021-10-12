@@ -1,5 +1,5 @@
 <template>
-  <li class="item" @click="showMovieDetails">
+  <li class="item" @click="openModal">
     <figure class="movie">
       <img
         v-if="movie.Poster !== 'N/A'"
@@ -27,8 +27,9 @@ export default {
     },
   },
   methods: {
-    showMovieDetails() {
-      console.log('showMovieDetails');
+    async openModal(event) {
+      await this.$store.dispatch('getMovieDetail', this.movie.imdbID);
+      await this.$store.commit('assignState', { isShowModal: true });
     },
   },
 };

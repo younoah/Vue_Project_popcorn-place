@@ -7,7 +7,6 @@
         v-for="movie in movies"
         :key="movie.imdbID"
         :movie="movie"
-        @click="openModal"
         class="search-result__item"
       />
     </ul>
@@ -25,12 +24,6 @@ export default {
   computed: {
     movies() {
       return this.$store.state.movies;
-    },
-  },
-  methods: {
-    openModal() {
-      console.log('openModal!!');
-      this.$store.commit('assignState', { isShowModal: true });
     },
   },
 };

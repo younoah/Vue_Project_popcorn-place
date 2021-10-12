@@ -27,11 +27,13 @@ export default createStore({
       });
       console.log('결과', state.movies);
     },
-    async getMovieDetail({ commit }, id) {
+    async getMovieDetail({ state, commit }, id) {
+      console.log('getMovieDetail!');
       const currentMovie = await API.getMovieDetail(id);
       commit('assignState', {
         currentMovie,
       });
+      console.log('결과', state.movies);
     },
   },
 });
